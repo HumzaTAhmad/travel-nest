@@ -1,4 +1,4 @@
-# senior-map
+# Travel Nest
 
 A platform for connecting hosts and travelers, similar to couch surfing where the user can offer his service to host other people or travellers even for free or for small amount. Offered rooms appear on the map or as normal cards on the page with more details and images slider. User can filter the rooms by the city or by the cost. 
 
