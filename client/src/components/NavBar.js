@@ -1,8 +1,22 @@
 import React from 'react';
 import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from '@mui/material';
+import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu} from '@mui/icons-material';
+import photoUrl from '../profile.jpeg';
+import UserIcons from './User/UserIcons';
+import { updateUser } from '../actions/user';
 
-function NavBar() {
+const user = {name:'test', photoUrl}
+
+function NavBar(props) {
+
+    const {user} = props
+    const dispatch = useDispatch();
+
+    const login = (e) => {
+        e.preventDefault();
+        dispatch(updateUser(user))
+    }
     return (
         <AppBar>
             <Container maxWidth='lg'>
@@ -18,13 +32,23 @@ function NavBar() {
                     <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
                         Host a Nest Now!
                     </Typography>
-                    <Button color='inherit' startIcon={<Lock />}>
+                    {user == undefined? (<Button color='inherit' startIcon={<Lock />} onClick={login}>
                         Login
-                    </Button>
+                    </Button>): (
+                        <UserIcons/>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
+        
     )
 }
 
-export default NavBar
+function mapStateToProps(state) {
+    console.log(state)
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(NavBar);

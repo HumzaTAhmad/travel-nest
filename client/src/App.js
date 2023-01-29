@@ -7,7 +7,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.currentUser,
+    user: state.user,
 });
 
 export default connect(mapStateToProps)(App);
