@@ -1,6 +1,6 @@
 # Travel Nest
 
-A platform for connecting hosts and travelers, similar to couch surfing where the user can offer his service to host other people or travellers even for free or for small amount. Offered rooms appear on the map or as normal cards on the page with more details and images slider. User can filter the rooms by the city or by the cost. 
+The platform is designed to connect hosts and travelers, similar to the concept of couch surfing. Hosts can offer their rooms or spaces for travelers to stay in, either for free or for a small fee. The rooms and spaces are displayed on a map or in the form of cards on the page, complete with detailed information and a slideshow of images. Travelers can easily filter the available rooms by city or cost, making it easier to find the perfect place to stay that fits their budget and location preferences.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
