@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {Avatar, Badge, Box, IconButton, Tooltip} from '@mui/material';
 import { Mail, Notifications } from '@mui/icons-material';
+import UserMenu from '../UserMenu';
 
 
 function UserIcons(props) {
-    const {currentUser} = props
+    const {user} = props
+    const [anchorUserMenu, setAnchorUserMenu] = useState(null)
     return (
         <Box>
             <IconButton size='large' color='inherit'>
@@ -19,19 +21,20 @@ function UserIcons(props) {
                 </Badge>
             </IconButton>
             <Tooltip title='Open User Setttings'>
-            <IconButton>
-                <Avatar src={currentUser?.photoUrl} alt={currentUser?.name}>
-                    {currentUser?.name?.charAt(0).toUpperCase()}
+            <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
+                <Avatar src={user?.photoUrl} alt={user?.name}>
+                    {user?.name?.charAt(0).toUpperCase()}
                 </Avatar>
             </IconButton>
             </Tooltip>
+            <UserMenu {...{ anchorUserMenu, setAnchorUserMenu}}/>
         </Box>
     )
 }
 
 function mapStateToProps(state) {
     return {
-      currentUser: state.currentUser
+      user: state.user
     };
 }
   

@@ -6,7 +6,7 @@ import photoUrl from '../profile.jpeg';
 import UserIcons from './User/UserIcons';
 import { updateUser } from '../actions/user';
 
-const user = {name:'test', photoUrl}
+const testUser = {name:'test', photoUrl}
 
 function NavBar(props) {
 
@@ -15,8 +15,9 @@ function NavBar(props) {
 
     const login = (e) => {
         e.preventDefault();
-        dispatch(updateUser(user))
+        dispatch(updateUser(testUser))
     }
+
     return (
         <AppBar>
             <Container maxWidth='lg'>
@@ -32,7 +33,7 @@ function NavBar(props) {
                     <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
                         Host a Nest Now!
                     </Typography>
-                    {user == undefined? (<Button color='inherit' startIcon={<Lock />} onClick={login}>
+                    {user == null || user.user==null? (<Button color='inherit' startIcon={<Lock />} onClick={login}>
                         Login
                     </Button>): (
                         <UserIcons/>
