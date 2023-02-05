@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {Avatar, Badge, Box, IconButton, Tooltip} from '@mui/material';
 import { Mail, Notifications } from '@mui/icons-material';
-import UserMenu from '../UserMenu';
+import UserMenu from './UserMenu';
 
 
 function UserIcons(props) {

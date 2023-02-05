@@ -2,7 +2,7 @@ import { Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useDispatch, connect } from 'react-redux';
-import { updateUser } from '../actions/user';
+import { updateUser } from '../../actions/user';
 
 function UserMenu({anchorUserMenu, setAnchorUserMenu}) {
 
