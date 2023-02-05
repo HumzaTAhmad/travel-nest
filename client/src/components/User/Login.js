@@ -3,6 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
 import { closeLogin, openLogin } from '../../actions/login';
+import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
 
 function Login(props) {
@@ -87,6 +88,9 @@ function Login(props) {
                 <Button onClick={()=>setIsRegiser(!isRegister)}>
                     {isRegister ? 'Login' : 'Register'}
                 </Button>
+            </DialogActions>
+            <DialogActions sx={{ justifyContent:'center', py:'24px' }}>
+                <GoogleOneTapLogin />
             </DialogActions>
         </Dialog>
     )

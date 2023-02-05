@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './components/NavBar';
-import Login from './components/User/Login';
+import Login from './components/user/Login';
 
 function App(props) {
     return (

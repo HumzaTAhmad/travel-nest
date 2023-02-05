@@ -3,7 +3,7 @@ import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from '@
 import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu} from '@mui/icons-material';
 import photoUrl from '../profile.jpeg';
-import UserIcons from './User/UserIcons';
+import UserIcons from './user/UserIcons';
 import { updateUser } from '../actions/user';
 import { openLogin } from '../actions/login';
 
