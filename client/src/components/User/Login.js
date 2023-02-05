@@ -3,6 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
 import { updateAlert } from '../../actions/alert';
+import { endLoading, startLoading } from '../../actions/loading';
 import { closeLogin, openLogin } from '../../actions/login';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
@@ -26,6 +27,13 @@ function Login(props) {
 
     function handleSubmit(e){
         e.preventDefault();
+
+        //testing Loading
+        dispatch(startLoading())
+
+        setTimeout(function(){
+            dispatch(endLoading())
+        }, 6000);
 
         //testing notification
         const password = passwordRef.current.value
@@ -85,7 +93,7 @@ function Login(props) {
                     <PasswordField passwordRef={confirmPasswordRef} id='confirmPassword' label='Confirm Password' />
                     }
                 </DialogContent>
-                <DialogActions>
+                <DialogActions sx={{px: '19px'}}>
                     <Button type='submit' variant='contained' endIcon={<Send />}>
                         Submit
                     </Button>
