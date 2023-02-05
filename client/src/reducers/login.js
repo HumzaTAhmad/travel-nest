@@ -2,10 +2,10 @@
 export default (state = false, action) => {
     console.log(action.type)
     switch(action.type){
-        case 'OPEN_LOGINFORM':
+        case 'OPEN_LOGIN':
             return {...state, loginform: true}
         
-        case 'CLOSE_LOGINFORM':
+        case 'CLOSE_LOGIN':
             return {...state, loginform: false}
 
         default:
