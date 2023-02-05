@@ -1,17 +1,17 @@
-export function openLogin(boolform) {
+export function openLogin() {
     return async function (dispatch) {
         try {
-            dispatch({ type:'OPEN_LOGIN', payload: boolform });
+            dispatch({ type:'OPEN_LOGIN'});
         } catch (error) {
             console.log(error.message);
         }
     }
 }
 
-export function closeLogin(boolform) {
+export function closeLogin() {
     return async function (dispatch) {
         try {
-            dispatch({ type:'CLOSE_LOGIN', payload: boolform });
+            dispatch({ type:'CLOSE_LOGIN'});
         } catch (error) {
             console.log(error.message);
         }

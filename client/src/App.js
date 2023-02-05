@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavBar from './components/NavBar';
+import Login from './components/User/Login';
 
 function App(props) {
-    return <NavBar />
+    return (
+        <>
+            <Login />
+            <NavBar />
+        </>
+    )
 }
 
 const mapStateToProps = state => ({

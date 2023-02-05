@@ -1,7 +1,9 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { Close, Send } from '@mui/icons-material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
+import React, { useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
-import { openLogin } from '../../actions/login';
+import { closeLogin, openLogin } from '../../actions/login';
+import PasswordField from './PasswordField';
 
 function Login(props) {
 
@@ -10,14 +12,14 @@ function Login(props) {
     const [title, setTitle] = useState('Login');
     const [isRegister, setIsRegiser] = useState(false);
     const nameRef = useRef()
-    const emailRef = userRef()
-    const passwordRef = userRef()
-    const confirmPasswordRef = userRef()
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const confirmPasswordRef = useRef()
     
     
 
     function handleClose(){
-        dispatch(openLogin(False));
+        dispatch(closeLogin());
     }
 
     function handleSubmit(e){
@@ -26,7 +28,7 @@ function Login(props) {
 
   return (
     <Dialog 
-    open={openLogin}
+    open={login}
     onClose={handleClose}
     >
         <DialogTitle>
@@ -54,7 +56,27 @@ function Login(props) {
                 required
                 />
                 )}
+                <TextField
+                autoFocus={!isRegister}
+                margin="normal"
+                variant="standard"
+                id="email"
+                label="Email"
+                type="email"
+                fullWidth
+                inputRef={nameRef}
+                required
+                />
+                <PasswordField {...{passwordRef}}/>
+                {isRegister &&
+                <PasswordField passwordRef={confirmPasswordRef} id='confirmPassword' label='Confirm Password' />
+                }
             </DialogContent>
+            <DialogActions>
+                <Button type='submit' variant='contained' endIcon={<Send />}>
+                    Submit
+                </Button>
+            </DialogActions>
         </form>
     </Dialog>
   )
