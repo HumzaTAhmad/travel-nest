@@ -1,6 +1,6 @@
 import { Close, Send } from '@mui/icons-material';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
 import { closeLogin, openLogin } from '../../actions/login';
 import PasswordField from './PasswordField';
@@ -26,60 +26,70 @@ function Login(props) {
         e.preventDefault();
     }
 
-  return (
-    <Dialog 
-    open={login}
-    onClose={handleClose}
-    >
-        <DialogTitle>
-            {title}
-            <IconButton sx={{position: 'absolute', top:8, right:8, color:(theme)=>theme.palette.grey[500]}} onClick={handleClose}>
-                <Close />
-            </IconButton>
-        </DialogTitle>
-        <form onSubmit={handleSubmit}>
-            <DialogContent>
-                <DialogContentText dividers>
-                    Please fill your information in the fields below:
-                </DialogContentText>
-                {isRegister && (
-                <TextField
-                autoFocus
-                margin="normal"
-                variant="standard"
-                id="name"
-                label="Name"
-                type="text"
-                fullWidth
-                inputRef={nameRef}
-                inputProps={{ minLength: 2 }}
-                required
-                />
-                )}
-                <TextField
-                autoFocus={!isRegister}
-                margin="normal"
-                variant="standard"
-                id="email"
-                label="Email"
-                type="email"
-                fullWidth
-                inputRef={nameRef}
-                required
-                />
-                <PasswordField {...{passwordRef}}/>
-                {isRegister &&
-                <PasswordField passwordRef={confirmPasswordRef} id='confirmPassword' label='Confirm Password' />
-                }
-            </DialogContent>
-            <DialogActions>
-                <Button type='submit' variant='contained' endIcon={<Send />}>
-                    Submit
+    useEffect(function() {
+        isRegister ? setTitle('Register') : setTitle('Login');
+      }, [isRegister]);
+
+    return (
+        <Dialog 
+        open={login}
+        onClose={handleClose}
+        >
+            <DialogTitle>
+                {title}
+                <IconButton sx={{position: 'absolute', top:8, right:8, color:(theme)=>theme.palette.grey[500]}} onClick={handleClose}>
+                    <Close />
+                </IconButton>
+            </DialogTitle>
+            <form onSubmit={handleSubmit}>
+                <DialogContent>
+                    <DialogContentText dividers>
+                        Please fill your information in the fields below:
+                    </DialogContentText>
+                    {isRegister && (
+                    <TextField
+                    autoFocus
+                    margin="normal"
+                    variant="standard"
+                    id="name"
+                    label="Name"
+                    type="text"
+                    fullWidth
+                    inputRef={nameRef}
+                    inputProps={{ minLength: 2 }}
+                    required
+                    />
+                    )}
+                    <TextField
+                    autoFocus={!isRegister}
+                    margin="normal"
+                    variant="standard"
+                    id="email"
+                    label="Email"
+                    type="email"
+                    fullWidth
+                    inputRef={nameRef}
+                    required
+                    />
+                    <PasswordField {...{passwordRef}}/>
+                    {isRegister &&
+                    <PasswordField passwordRef={confirmPasswordRef} id='confirmPassword' label='Confirm Password' />
+                    }
+                </DialogContent>
+                <DialogActions>
+                    <Button type='submit' variant='contained' endIcon={<Send />}>
+                        Submit
+                    </Button>
+                </DialogActions>
+            </form>
+            <DialogActions sx={{justifyContent: 'left', p:'5px 24px'}}>
+                {isRegister?'Do you have an account? Sign in now ' : "Don't you have an account? Creat one now"}
+                <Button onClick={()=>setIsRegiser(!isRegister)}>
+                    {isRegister ? 'Login' : 'Register'}
                 </Button>
             </DialogActions>
-        </form>
-    </Dialog>
-  )
+        </Dialog>
+    )
 }
 
 function mapStateToProps(state) {
