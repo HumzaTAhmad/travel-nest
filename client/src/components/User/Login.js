@@ -2,6 +2,7 @@ import { Close, Send } from '@mui/icons-material';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
+import { updateAlert } from '../../actions/alert';
 import { closeLogin, openLogin } from '../../actions/login';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
@@ -25,6 +26,13 @@ function Login(props) {
 
     function handleSubmit(e){
         e.preventDefault();
+
+        //testing notification
+        const password = passwordRef.current.value
+        const confirmPassword = confirmPasswordRef.current.value
+        if(password !== confirmPassword){
+            dispatch(updateAlert({open:true, severity:'error', message:'Password do no match'}))
+        }
     }
 
     useEffect(function() {

@@ -3,10 +3,10 @@ export default (state = false, action) => {
     console.log(action.type)
     switch(action.type){
         case 'OPEN_LOGIN':
-            return state = true;
+            return true;
         
         case 'CLOSE_LOGIN':
-            return state = false
+            return false
 
         default:
             return state
