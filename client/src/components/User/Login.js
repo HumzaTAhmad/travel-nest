@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
 import { updateAlert } from '../../actions/alert';
 import { endLoading, startLoading } from '../../actions/loading';
-import { closeLogin, openLogin } from '../../actions/login';
+import { closeLogin} from '../../actions/login';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
 
@@ -85,7 +85,7 @@ function Login(props) {
                     label="Email"
                     type="email"
                     fullWidth
-                    inputRef={nameRef}
+                    inputRef={emailRef}
                     required
                     />
                     <PasswordField {...{passwordRef}}/>

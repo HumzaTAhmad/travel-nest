@@ -2,12 +2,9 @@ import React from 'react';
 import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from '@mui/material';
 import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu} from '@mui/icons-material';
-import photoUrl from '../profile.jpeg';
 import UserIcons from './user/UserIcons';
-import { updateUser } from '../actions/user';
 import { openLogin } from '../actions/login';
 
-const testUser = {name:'test', photoUrl}
 
 function NavBar(props) {
 

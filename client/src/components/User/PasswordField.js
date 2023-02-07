@@ -16,7 +16,6 @@ export default function PasswordField({passwordRef, id='password', label='Passwo
 
     return (
     <TextField
-        autoFocus
         margin="normal"
         variant="standard"
         id={id}
