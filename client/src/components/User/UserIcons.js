@@ -22,7 +22,7 @@ function UserIcons(props) {
             </IconButton>
             <Tooltip title='Open User Setttings'>
             <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
-                <Avatar src={user?.photoUrl} alt={user?.name}>
+                <Avatar src={user?.photoURL} alt={user?.name}>
                     {user?.name?.charAt(0).toUpperCase()}
                 </Avatar>
             </IconButton>

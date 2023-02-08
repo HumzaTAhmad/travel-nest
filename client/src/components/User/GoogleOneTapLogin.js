@@ -1,15 +1,22 @@
 import { Google } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { updateAlert } from '../../actions/alert';
+import jwtDecode from 'jwt-decode';
+import { updateUser } from '../../actions/user';
+import { closeLogin } from '../../actions/login';
 
 function GoogleOneTapLogin() {
   const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(false)
 
   function handleResponse(response){
-    console.log(response)
+    const token = response.credential
+    const decodedToken = jwtDecode(token)
+    const {sub:id, email, name, picture:photoURL} = decodedToken
+    dispatch(updateUser({id, email, name, photoURL, token, google:true}))
+    dispatch(closeLogin())
   }
 
 
@@ -21,8 +28,10 @@ function GoogleOneTapLogin() {
         callback: handleResponse
       })
       window.google.accounts.id.prompt(function(notification){
-        if(notification.isNotDisplayed){
-          throw new Error('Try to clear the cookies or try again later!')
+        console.log("this runs")
+        if(notification.isNotDisplayed()){
+          document.cookie =  `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+          window.google.accounts.id.prompt()
         }
         if(notification.isSkippedMoment() || notification.isDismissedMoment()){
           setDisabled(false)
