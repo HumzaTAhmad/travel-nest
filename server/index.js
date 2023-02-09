@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import roomRouter from './routes/roomRouter';
+import roomRouter from './routes/roomRouter.js';
 
 
 dotenv.config()
@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 
 
-app.use('/', (req, res)=>res.json({message: 'Welcome to our API'}))
-app.use((req, res)=>res.status(404).json({success:false, message:'Not Found'}))
+
+//app.use((req, res)=>res.status(404).json({success:false, message:'Not Found'}))
 app.use("/room", roomRouter)
 
 

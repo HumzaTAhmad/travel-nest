@@ -2,6 +2,7 @@ import { Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useDispatch, connect } from 'react-redux';
+import { createRoom } from '../../actions/rooms';
 import { updateUser } from '../../actions/user';
 
 function UserMenu({anchorUserMenu, setAnchorUserMenu}) {
@@ -17,6 +18,10 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu}) {
         dispatch(updateUser(null))
     }
 
+    async function testAuthorization(){
+        dispatch(createRoom())
+    }
+
     return (
         <Menu
         anchorEl={anchorUserMenu}
@@ -24,7 +29,7 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu}) {
         onClose={handleCloseUserMenu}
         onClick={handleCloseUserMenu}
         >
-            <MenuItem>
+            <MenuItem onClick={testAuthorization}>
                 <ListItemIcon>
                     <Settings fontSize="small" />
                 </ListItemIcon>
