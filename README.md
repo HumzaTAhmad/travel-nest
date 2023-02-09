@@ -56,7 +56,7 @@ Will be deployed on AWS EC2 instance for 24/7 availability
 ## Authors
 
 - **Humza Ahmad** - *Software Developer* - [Your GitHub profile](https://github.com/HumzaTAhmad)
-- **Chriss** - *Software Developer* - [Your GitHub profile](https://github.com/Chriss)
+- **Chriss** - *Software Developer* - [Your GitHub profile](https://github.com/ChrissOboa)
 
 
 ## Acknowledgments
