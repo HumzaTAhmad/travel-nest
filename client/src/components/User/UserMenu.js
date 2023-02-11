@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, connect } from 'react-redux';
 import { createRoom } from '../../actions/rooms';
 import { updateUser } from '../../actions/user';
+import { authenticateUser } from '../../api/auth';
 
 function UserMenu({anchorUserMenu, setAnchorUserMenu}) {
 

@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import {Avatar, Badge, Box, IconButton, Tooltip} from '@mui/material';
 import { Mail, Notifications } from '@mui/icons-material';
 import UserMenu from './UserMenu';
+import useCheckToken from '../../hooks/useCheckToken';
 
 
 function UserIcons(props) {
+    
     const {user} = props
     const [anchorUserMenu, setAnchorUserMenu] = useState(null)
     return (

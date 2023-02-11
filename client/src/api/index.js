@@ -8,9 +8,9 @@ export const createRoom = (newRoom) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer' + state.user.token
+            'Authorization': 'Bearer ' + state.user.token
         }
     }
-
-    return axios.post(url1, newRoom, config);
+    
+    return axios.post(url1, newRoom, config)
 }
