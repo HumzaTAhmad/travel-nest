@@ -41,3 +41,27 @@ export const createUser = async ({token='', user=null}, dispatch) =>{
         return null
     }
 }
+
+export const getUser = async ({token='', user=null}, dispatch) =>{
+    const state = store.getState()
+    const config = token
+        ?{headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + state.user.token}}
+        :{headers: {'Content-Type': 'application/json'}}
+    
+    config.body = user ? JSON.stringify(user) : {};
+    
+    const email = user ? user.email : null;
+    const password = user ? user.password : null;
+    try{
+        const response = await axios.get(url2 + `/login?email=${email}&password=${password}`, user, config)
+        const data = await response.data
+        if(!data.success){
+            if(response.status === 401) dispatch(updateUser(null))
+            throw new Error(data.message)
+        }
+        return data
+    } catch (error) {
+        dispatch(updateAlert({open:true, severity:'error', message:error.response.data.message}))
+        return null
+    }
+}

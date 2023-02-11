@@ -5,7 +5,7 @@ import { useDispatch, connect } from 'react-redux';
 import { updateAlert } from '../../actions/alert';
 import { endLoading, startLoading } from '../../actions/loading';
 import { closeLogin} from '../../actions/login';
-import { createUser } from '../../actions/user';
+import { createUser, getUser } from '../../actions/user';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
 
@@ -30,6 +30,7 @@ function Login(props) {
         e.preventDefault();
         const email = emailRef.current.value
         const password = passwordRef.current.value
+        if(!isRegister) return dispatch(getUser({email, password}, dispatch))
         // send login request if it is not register and return 
         const name = nameRef.current.value
         const confirmPassword = confirmPasswordRef.current.value
