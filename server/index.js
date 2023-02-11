@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import roomRouter from './routes/roomRouter.js';
+import userRouter from './routes/userRouter.js';
 
 
 dotenv.config()
@@ -19,6 +20,7 @@ app.use(cors());
 
 //app.use((req, res)=>res.status(404).json({success:false, message:'Not Found'}))
 app.use("/room", roomRouter)
+app.use("/user", userRouter)
 
 
 const PORT = process.env.PORT || 5000;

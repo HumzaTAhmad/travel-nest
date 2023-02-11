@@ -5,6 +5,7 @@ import { useDispatch, connect } from 'react-redux';
 import { updateAlert } from '../../actions/alert';
 import { endLoading, startLoading } from '../../actions/loading';
 import { closeLogin} from '../../actions/login';
+import { createUser } from '../../actions/user';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
 
@@ -27,20 +28,15 @@ function Login(props) {
 
     function handleSubmit(e){
         e.preventDefault();
-
-        //testing Loading
-        dispatch(startLoading())
-
-        setTimeout(function(){
-            dispatch(endLoading())
-        }, 6000);
-
-        //testing notification
+        const email = emailRef.current.value
         const password = passwordRef.current.value
+        // send login request if it is not register and return 
+        const name = nameRef.current.value
         const confirmPassword = confirmPasswordRef.current.value
-        if(password !== confirmPassword){
-            dispatch(updateAlert({open:true, severity:'error', message:'Password do no match'}))
-        }
+        if(password !== confirmPassword) return dispatch(updateAlert({open:true, severity:'error', message:'Passwords dont match'}))
+        
+        //Send register request
+        dispatch(createUser({name, email, password}, dispatch))
     }
 
     useEffect(function() {
