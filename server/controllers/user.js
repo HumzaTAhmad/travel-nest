@@ -51,3 +51,17 @@ export const getUser = async (req, res) => {
         res.status(500).json({success:false, message:'Something went wrong! try again later'})
     }
 }
+
+export const updateProfile = async(req, res) => {
+    console.log(req.query)
+    try {
+        const updatedUser = await userModel.findByIdAndUpdate(req.user.id, req.body, {new:true})
+        const  {_id:id, name, photoURL} = updatedUser
+        const token = jwt.sign({id, name, photoURL}, process.env.JWT_SECRET, {expiresIn:'1h'})
+        res.status(200).json({success:true, result:{name, photoURL, token}})
+    } catch (error) {
+        console.log(error)
+        console.log("THIS ABOUT TO RUn")
+        res.status(500).json({success:false, message: error})
+    }
+}

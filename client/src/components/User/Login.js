@@ -45,10 +45,7 @@ function Login(props) {
       }, [isRegister]);
 
     return (
-        <Dialog 
-        open={login}
-        onClose={handleClose}
-        >
+        <Dialog open={login} onClose={handleClose}>
             <DialogTitle>
                 {title}
                 <IconButton sx={{position: 'absolute', top:8, right:8, color:(theme)=>theme.palette.grey[500]}} onClick={handleClose}>
