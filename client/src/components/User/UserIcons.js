@@ -8,7 +8,7 @@ import useCheckToken from '../../hooks/useCheckToken';
 
 function UserIcons(props) {
     
-    const {user} = props
+    const {currentUser} = props
     const [anchorUserMenu, setAnchorUserMenu] = useState(null)
     return (
         <Box>
@@ -24,8 +24,8 @@ function UserIcons(props) {
             </IconButton>
             <Tooltip title='Open User Setttings'>
             <IconButton onClick={(e)=>setAnchorUserMenu(e.currentTarget)}>
-                <Avatar src={user?.photoURL} alt={user?.name}>
-                    {user?.name?.charAt(0).toUpperCase()}
+                <Avatar src={currentUser?.photoURL} alt={currentUser?.name}>
+                    {currentUser?.name?.charAt(0).toUpperCase()}
                 </Avatar>
             </IconButton>
             </Tooltip>
@@ -36,7 +36,7 @@ function UserIcons(props) {
 
 function mapStateToProps(state) {
     return {
-      user: state.user
+      currentUser: state.currentUser
     };
 }
   

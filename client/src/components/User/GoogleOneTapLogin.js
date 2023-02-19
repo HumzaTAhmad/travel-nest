@@ -2,10 +2,7 @@ import { Google } from '@mui/icons-material'
 import { Button } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
 import React, { useState } from 'react';
-import { updateAlert } from '../../actions/alert';
 import jwtDecode from 'jwt-decode';
-import { updateUser } from '../../actions/user';
-import { closeLogin } from '../../actions/login';
 
 function GoogleOneTapLogin() {
   const dispatch = useDispatch();
@@ -15,8 +12,8 @@ function GoogleOneTapLogin() {
     const token = response.credential
     const decodedToken = jwtDecode(token)
     const {sub:id, email, name, picture:photoURL} = decodedToken
-    dispatch(updateUser({id, email, name, photoURL, token, google:true}))
-    dispatch(closeLogin())
+    dispatch({type:'UPDATE_USER', payload: {id, email, name, photoURL, token, google:true}})
+    dispatch({ type: 'CLOSE_LOGIN' });
   }
 
 
@@ -38,7 +35,7 @@ function GoogleOneTapLogin() {
         }
       })
     } catch(error) {
-      dispatch(updateAlert({open:true, severity: 'error', message: error.message}))
+      dispatch({type: 'UPDATE_ALERT', payload:{ open: true, severity: 'error', message: error.message }})
       console.log(error)
     }
   }

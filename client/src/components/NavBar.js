@@ -8,13 +8,9 @@ import { openLogin } from '../actions/login';
 
 function NavBar(props) {
 
-    const {user} = props
+    const {currentUser} = props
     const dispatch = useDispatch();
 
-    const login = (e) => {
-        e.preventDefault();
-        dispatch(openLogin())
-    }
 
     return (
         <AppBar>
@@ -31,7 +27,7 @@ function NavBar(props) {
                     <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
                         Host a Nest Now!
                     </Typography>
-                    {user == null? (<Button color='inherit' startIcon={<Lock />} onClick={login}>
+                    {currentUser == null? (<Button color='inherit' startIcon={<Lock />} onClick={() => dispatch({type:'OPEN_LOGIN'})}>
                         Login
                     </Button>): (
                         <UserIcons/>
@@ -46,7 +42,7 @@ function NavBar(props) {
 function mapStateToProps(state) {
     console.log(state)
   return {
-    user: state.user
+    currentUser: state.currentUser
   };
 }
 

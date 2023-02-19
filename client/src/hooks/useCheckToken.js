@@ -4,13 +4,13 @@ import jwtDecode from 'jwt-decode';
 import { updateUser } from '../actions/user';
 //this needs to be changed from a component to a func
 function useCheckToken(props) {
-  const {user} = props.user
+  const {currentUser} = props.user
   const {dispatch} = useDispatch()
   
   useEffect(function(){
-    if(user){
-        const decodedToken = jwtDecode(user.token)
-        if(decodedToken.exp * 1000 < new Date().getTime()) dispatch(updateUser(null))
+    if(currentUser){
+        const decodedToken = jwtDecode(currentUser.token)
+        if(decodedToken.exp * 1000 < new Date().getTime()) dispatch({type:'UPDATE_USER', payload:null})
     }
 
   }, [])
@@ -19,7 +19,7 @@ function useCheckToken(props) {
 function mapStateToProps(state) {
     console.log(state)
     return {
-        user: state.user
+        currentUser: state.currentUser
     };
 }
   

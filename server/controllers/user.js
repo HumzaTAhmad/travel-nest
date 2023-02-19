@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs'
 import userModel from '../models/User.js'
 import { JWT } from 'google-auth-library'
 import jwt from 'jsonwebtoken'
+import tryCatch from './utils/tryCatch.js'
 
 export const createUser = async (req, res) => {
     try {
@@ -30,27 +31,30 @@ export const createUser = async (req, res) => {
     }
 }
 
-export const getUser = async (req, res) => {
-    console.log(req.query)
-    try {
-        const {email, password} = req.query
-        
-        const emailLowerCase = email.toLowerCase()
-        const existedUser = await userModel.findOne({email:emailLowerCase})
-        
-        if(!existedUser) return res.status(404).json({success:false, message:'User doesn not exist!'})
-        const correctPassword = await bcrypt.compare(password, existedUser.password)
-        if (!correctPassword) return res.status(400).json({success:false, message:'Invalid credentials'})
- 
-        const {_id:id, name, photoURL} = existedUser
-        const token = jwt.sign({id, name, photoURL}, process.env.JWT_SECRET, {expiresIn:'1h'})
-        res.status(200).json({success:true, result:{id, name, email:emailLowerCase, photoURL, token}})
-    } catch (error) {
-        console.log(error)
-        console.log("THIS ABOUT TO RUn")
-        res.status(500).json({success:false, message:'Something went wrong! try again later'})
-    }
-}
+export const getUser = tryCatch(async (req, res) => {
+    const { email, password } = req.body;
+    console.log(req.body)
+    const emailLowerCase = email.toLowerCase();
+    const existedUser = await userModel.findOne({ email: emailLowerCase });
+    if (!existedUser)
+      return res
+        .status(404)
+        .json({ success: false, message: 'User does not exist!' });
+    const correctPassword = await bcrypt.compare(password, existedUser.password);
+    if (!correctPassword)
+      return res
+        .status(400)
+        .json({ success: false, message: 'Invalid credentials' });
+  
+    const { _id: id, name, photoURL } = existedUser;
+    const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    });
+    res.status(200).json({
+      success: true,
+      result: { id, name, email: emailLowerCase, photoURL, token },
+    });
+  });
 
 export const updateProfile = async(req, res) => {
     console.log(req.query)

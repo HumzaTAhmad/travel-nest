@@ -2,16 +2,13 @@ import { Close, Send } from '@mui/icons-material';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, connect } from 'react-redux';
-import { updateAlert } from '../../actions/alert';
-import { endLoading, startLoading } from '../../actions/loading';
-import { closeLogin} from '../../actions/login';
-import { createUser, getUser } from '../../actions/user';
+import { login, register } from '../../actions/user';
 import GoogleOneTapLogin from './GoogleOneTapLogin';
 import PasswordField from './PasswordField';
 
 function Login(props) {
 
-    const {login} = props;
+    const {openLogin} = props;
     const dispatch = useDispatch();
     const [title, setTitle] = useState('Login');
     const [isRegister, setIsRegiser] = useState(false);
@@ -23,21 +20,21 @@ function Login(props) {
     
 
     function handleClose(){
-        dispatch(closeLogin());
+        dispatch({type:'CLOSE_LOGIN'});
     }
 
     function handleSubmit(e){
         e.preventDefault();
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        if(!isRegister) return dispatch(getUser({email, password}, dispatch))
+        if(!isRegister) return dispatch(login({email, password}, dispatch))
         // send login request if it is not register and return 
         const name = nameRef.current.value
         const confirmPassword = confirmPasswordRef.current.value
-        if(password !== confirmPassword) return dispatch(updateAlert({open:true, severity:'error', message:'Passwords dont match'}))
+        if(password !== confirmPassword) return dispatch({type:'UPDATE_ALERT', payload: {open:true, severity:'error', message:'Passwords dont match'}})
         
         //Send register request
-        dispatch(createUser({name, email, password}, dispatch))
+        dispatch(register({name, email, password}, dispatch))
     }
 
     useEffect(function() {
@@ -45,7 +42,7 @@ function Login(props) {
       }, [isRegister]);
 
     return (
-        <Dialog open={login} onClose={handleClose}>
+        <Dialog open={openLogin} onClose={handleClose}>
             <DialogTitle>
                 {title}
                 <IconButton sx={{position: 'absolute', top:8, right:8, color:(theme)=>theme.palette.grey[500]}} onClick={handleClose}>
@@ -109,7 +106,7 @@ function Login(props) {
 function mapStateToProps(state) {
     console.log(state)
   return {
-    login: state.login
+    openLogin: state.openLogin
   };
 }
 

@@ -1,45 +1,38 @@
-import { updateAlert } from "./alert";
-import { endLoading, startLoading } from "./loading";
-import { closeLogin } from "./login";
-import * as api from '../api';
+import fetchData from './utils/fetchData';
 
+const url = process.env.REACT_APP_SERVER_URL + '/user';
 
-export function updateUser(user) {
-    return async function (dispatch) {
-        try {
-            console.log("In user it is", user)
-            dispatch({ type:'UPDATE_USER', payload: user });
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-}
+export const register = async (user, dispatch) => {
+  dispatch({ type: 'START_LOADING' });
 
-export function createUser(user){
-    return async function(dispatch){
-        dispatch(startLoading())
-        //SEND REQUEST WITH FETCH
-        const result = await api.createUser({user:user}, dispatch)
-        console.log(result)
-        if(result){
-            dispatch(updateUser(result.result))
-            dispatch(closeLogin())
-            dispatch(updateAlert({open:true, severity:'success', message:'Your account has been created successfully'}))
-        }
-        dispatch(endLoading())
-    }
-}
+  const result = await fetchData(
+    { url: url + '/register', body: user },
+    dispatch
+  );
+  if (result) {
+    dispatch({ type: 'UPDATE_USER', payload: result });
+    dispatch({ type: 'CLOSE_LOGIN' });
+    dispatch({
+      type: 'UPDATE_ALERT',
+      payload: {
+        open: true,
+        severity: 'success',
+        message: 'Your account has been created successfully',
+      },
+    });
+  }
 
-export function getUser(user){
-    return async function(dispatch){
-        dispatch(startLoading())
-        //SEND REQUEST WITH FETCH
-        const result = await api.getUser({user:user}, dispatch)
-        console.log(result)
-        if(result){
-            dispatch(updateUser(result.result))
-            dispatch(closeLogin())
-        }
-        dispatch(endLoading())
-    }
-}
+  dispatch({ type: 'END_LOADING' });
+};
+
+export const login = async (user, dispatch) => {
+  dispatch({ type: 'START_LOADING' });
+
+  const result = await fetchData({ url: url + '/login', body: user }, dispatch);
+  if (result) {
+    dispatch({ type: 'UPDATE_USER', payload: result });
+    dispatch({ type: 'CLOSE_LOGIN' });
+  }
+
+  dispatch({ type: 'END_LOADING' });
+};

@@ -1,7 +1,6 @@
 import { Alert, Snackbar } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
 import React from 'react'
-import { updateAlert } from '../actions/alert';
 
 
 function Notifications(props) {
@@ -10,7 +9,7 @@ function Notifications(props) {
 
   function handleClose(event, reason){
     if (reason === 'clickaway') return
-    dispatch(updateAlert({...alert, open:false})) //overwriting the open property in the alert object
+    dispatch({type: 'UPDATE_ALERT', payload:{...alert, open: false}}) //overwriting the open property in the alert object
   }
 
   return (

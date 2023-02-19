@@ -2,8 +2,6 @@ import { Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import { useDispatch, connect } from 'react-redux';
-import { updateProfile } from '../../actions/profile';
-import { updateUser } from '../../actions/user';
 import Profile from './Profile';
 
 function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
@@ -15,7 +13,7 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
 
     const logout = (e) => {
         e.preventDefault();
-        dispatch(updateUser(null))
+        dispatch({type:'UPDATE_USER', payload:null})
     }
 
 
@@ -27,7 +25,7 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
             onClose={handleCloseUserMenu}
             onClick={handleCloseUserMenu}
             >
-                <MenuItem onClick={()=>dispatch(updateProfile({open:true, file:null, photoURL:user?.photoURL}))}>
+                <MenuItem onClick={()=>dispatch({type:'UPDATE_USER', payload: {open:true, file:null, photoURL:user?.photoURL}})}>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
@@ -46,7 +44,7 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
 }
 
 const mapStateToProps = state => ({
-    user: state.user,
+    currentUser: state.currentUser,
 });
 
 export default connect(mapStateToProps)(UserMenu);

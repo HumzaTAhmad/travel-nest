@@ -1,4 +1,4 @@
-import {store} from './../index.js'
+import {store} from '../index.js'
 
 //state is the state of the user
 export default (state = null, action) => {

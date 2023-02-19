@@ -2,17 +2,16 @@ import { Close, Send } from '@mui/icons-material';
 import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
 import React, {useRef} from 'react'
 import { useDispatch, connect } from 'react-redux';
-import { updateProfile } from '../../actions/profile';
 
 function Profile(props) {
-    const {profile, user} = props;
+    const {profile, currentUser} = props;
     const dispatch = useDispatch();
 
     const nameRef = useRef()
 
 
     const handleClose = () =>{
-        dispatch(updateProfile({...profile, open:false}))
+        dispatch({type:'UPDATE_PROFILE', payload: {...profile, open:false}})
     }
 
     const handleSubmit = (e) =>{
@@ -23,7 +22,7 @@ function Profile(props) {
         const file = e.target.files[0]
         if(file){
             const photoURL = URL.createObjectURL(file)
-            dispatch(updateProfile({...profile, file, photoURL}))
+            dispatch({type:'UPDATE_PROFILE', payload: {...profile, file, photoURL}})
         }
     }
   return (
@@ -50,7 +49,7 @@ function Profile(props) {
             inputRef={nameRef}
             inputProps={{ minLength: 2 }}
             required
-            defaultValue={user?.name}
+            defaultValue={currentUser?.name}
             />
         <label htmlFor='profilePhoto'>
             <input accept='image/*' id='profilePhoto' type='file' style={{display:'none'}} onChange={handleChange} />
@@ -72,7 +71,7 @@ function mapStateToProps(state) {
     console.log(state)
   return {
     profile: state.profile,
-    user: state.user
+    currentUser: state.currentUser
   };
 }
 
