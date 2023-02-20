@@ -8,7 +8,7 @@ import reducers from './reducers';
 
 
 //retrieve the user information from local storage
-const persistedState = JSON.parse(localStorage.getItem('user')) || null;
+const persistedState = JSON.parse(localStorage.getItem('currentUser')) || null;
 
 //Use redux thunk so we can pass functions such as action creators into the disptach function. {user: persistedState} is saying user in your state is being overwritten by persistedstate. This means that its state will be the only thing saved
 export const store = createStore(reducers, {currentUser: persistedState}, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));

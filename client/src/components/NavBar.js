@@ -3,7 +3,6 @@ import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from '@
 import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu} from '@mui/icons-material';
 import UserIcons from './user/UserIcons';
-import { openLogin } from '../actions/login';
 
 
 function NavBar(props) {

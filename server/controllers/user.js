@@ -9,7 +9,6 @@ export const createUser = async (req, res) => {
         const {name, email, password} = req.body
         if(password.length < 6) return res.status(400).json({success: false, message: 'Password must be 6 characters or more'})
         const emailLowerCase = email.toLowerCase()
-        console.log(emailLowerCase)
         const existedUser = await userModel.findOne({email:emailLowerCase})
         
         if(existedUser) return res.status(400).json({success:false, message:'User already exists!'})
@@ -22,18 +21,16 @@ export const createUser = async (req, res) => {
         })
         const {_id:id, photoURL} = user
         const token = jwt.sign({id, name, photoURL}, process.env.JWT_SECRET, {expiresIn:'1h'})
-        console.log(token)
+
         res.status(201).json({success:true, result:{id, name, email:user.email, photoURL, token}})
     } catch (error) {
-        console.log(error)
-        console.log("THIS ABOUT TO RUn")
+
         res.status(500).json({success:false, message:'Something went wrong! try again later'})
     }
 }
 
 export const getUser = tryCatch(async (req, res) => {
     const { email, password } = req.body;
-    console.log(req.body)
     const emailLowerCase = email.toLowerCase();
     const existedUser = await userModel.findOne({ email: emailLowerCase });
     if (!existedUser)
@@ -56,16 +53,18 @@ export const getUser = tryCatch(async (req, res) => {
     });
   });
 
-export const updateProfile = async(req, res) => {
-    console.log(req.query)
-    try {
-        const updatedUser = await userModel.findByIdAndUpdate(req.user.id, req.body, {new:true})
-        const  {_id:id, name, photoURL} = updatedUser
-        const token = jwt.sign({id, name, photoURL}, process.env.JWT_SECRET, {expiresIn:'1h'})
-        res.status(200).json({success:true, result:{name, photoURL, token}})
-    } catch (error) {
-        console.log(error)
-        console.log("THIS ABOUT TO RUn")
-        res.status(500).json({success:false, message: error})
-    }
-}
+export const updateProfile = tryCatch(async (req, res) => {
+  console.log('updateProfile RUNS')
+  console.log(req.user)
+  console.log(req.body)
+  const updatedUser = await userModel.findByIdAndUpdate(req.user.id, req.body, {new:true})
+  const {_id:id, name, photoURL} = updatedUser
+
+
+  //to do: update all the rooms records added by the user
+
+  const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
+  res.status(200).json({success:true, result:{name, photoURL, token}})
+})

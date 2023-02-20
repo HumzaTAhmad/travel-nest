@@ -2,6 +2,7 @@ import { Close, Send } from '@mui/icons-material';
 import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField } from '@mui/material'
 import React, {useRef} from 'react'
 import { useDispatch, connect } from 'react-redux';
+import { updateProfile } from '../../actions/user';
 
 function Profile(props) {
     const {profile, currentUser} = props;
@@ -16,6 +17,9 @@ function Profile(props) {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        const name = nameRef.current.value
+        //pass user name and photo file to new function in user actions
+        updateProfile(currentUser, {name, file:profile.file}, dispatch)
     }
 
     const handleChange = (e) =>{

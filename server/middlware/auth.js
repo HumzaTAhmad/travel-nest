@@ -18,7 +18,7 @@ async function auth(req, res, next){
             req.user = {id:payload.sub, name:payload.name, photoURL:payload.picture}
         }else{
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
-            const {id, name, photo} = decodedToken
+            const {id, name, photoURL} = decodedToken
             req.user = {id, name, photoURL}
         }
         next()

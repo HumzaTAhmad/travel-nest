@@ -4,9 +4,8 @@ import React from 'react';
 import { useDispatch, connect } from 'react-redux';
 import Profile from './Profile';
 
-function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
+function UserMenu({anchorUserMenu, setAnchorUserMenu, currentUser}) {
     const dispatch = useDispatch();
-
     function handleCloseUserMenu(){
         setAnchorUserMenu(null)
     }
@@ -25,12 +24,14 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, user}) {
             onClose={handleCloseUserMenu}
             onClick={handleCloseUserMenu}
             >
-                <MenuItem onClick={()=>dispatch({type:'UPDATE_USER', payload: {open:true, file:null, photoURL:user?.photoURL}})}>
+                {!currentUser?.google && (
+                    <MenuItem onClick={()=>dispatch({type:'UPDATE_PROFILE', payload: {open:true, file:null, photoURL:currentUser?.photoURL}})}>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
                     Profile
-                </MenuItem>
+                    </MenuItem>
+                )}
                 <MenuItem onClick={logout}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

@@ -5,7 +5,7 @@ export default (state = null, action) => {
     console.log(action.type)
     switch(action.type){
         case 'UPDATE_USER':
-            localStorage.setItem('user', JSON.stringify(action.payload))
+            localStorage.setItem('currentUser', JSON.stringify(action.payload))
             return action.payload
         
         default:
