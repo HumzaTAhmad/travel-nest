@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import BottomNav from './components/BottomNav';
 import Loading from './components/Loading';
 import NavBar from './components/NavBar';
 import Notifications from './components/Notifications';
@@ -12,6 +13,7 @@ function App(props) {
             <Notifications />
             <Login />
             <NavBar />
+            <BottomNav />
         </>
     )
 }
