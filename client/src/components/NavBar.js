@@ -12,29 +12,31 @@ function NavBar(props) {
 
 
     return (
-        <AppBar>
-            <Container maxWidth='lg'>
-                <Toolbar disableGutters>
-                    <Box sx={{mr:1}}>
-                        <IconButton size='large' color='inherit'>
-                            <Menu />
-                        </IconButton>
-                    </Box>
-                    <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'none', md:'flex'}}}>
-                        Host a Nest Now!
-                    </Typography>
-                    <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
-                        Host a Nest Now!
-                    </Typography>
-                    {currentUser == null? (<Button color='inherit' startIcon={<Lock />} onClick={() => dispatch({type:'OPEN_LOGIN'})}>
-                        Login
-                    </Button>): (
-                        <UserIcons/>
-                    )}
-                </Toolbar>
-            </Container>
-        </AppBar>
-        
+        <>
+            <AppBar>
+                <Container maxWidth='lg'>
+                    <Toolbar disableGutters>
+                        <Box sx={{mr:1}}>
+                            <IconButton size='large' color='inherit'>
+                                <Menu />
+                            </IconButton>
+                        </Box>
+                        <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'none', md:'flex'}}}>
+                            Host a Nest Now!
+                        </Typography>
+                        <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
+                            Host a Nest Now!
+                        </Typography>
+                        {currentUser == null? (<Button color='inherit' startIcon={<Lock />} onClick={() => dispatch({type:'OPEN_LOGIN'})}>
+                            Login
+                        </Button>): (
+                            <UserIcons/>
+                        )}
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <Toolbar />
+        </>
     )
 }
 

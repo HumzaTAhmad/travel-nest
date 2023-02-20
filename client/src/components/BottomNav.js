@@ -1,12 +1,24 @@
 import { AddLocationAlt, Bed, LocationOn } from '@mui/icons-material'
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import ClusterMap from './map/ClusterMap'
+import Rooms from './rooms/Rooms'
+import AddRoom from './addRoom/AddRoom'
 
 export default function BottomNav() {
     const[value, setValue] = useState(0)
+    const ref = useRef()
+    useEffect(()=>{
+        ref.current.ownerDocument.body.scrollTop = 0
+    }, [value])
   return (
-    <Box>
+    <Box ref={ref}>
+        {{
+            0:<ClusterMap />,
+            1:<Rooms />,
+            2:<AddRoom />
+        }[value]}
         <Paper elevation={3} sx={{position:'fixed', bottom:0, left:0, right:0, zIndex:2}}>
             <BottomNavigation
             showLabels
