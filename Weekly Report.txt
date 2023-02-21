@@ -1,26 +1,55 @@
-WEEK 1 (FEB 13- JAN 19)
+WEEK 1 (FEB 13- FEB 19)
 A. Weekly Accomplishments
 Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
-1) …					
-2) ...
-3) ...
+
+1) NavBar Creation with Login, register, and profile options was completed by Chriss()
+
+2) Initialized backend Node.js server and connection with mongoDB database. This was done by Humza and was done in order to have a running server where we can make our routes and API calls that will interact with the database.
+   The backend was connected to our mongoDB database by using mongoose and providing our mongoDB collection string.(2 hours)
+
+3) Implemented Routes using express.js for /register, and /login. This was done by Humza and was done in order for incoming requests to our server to be routed to the correct API
+   fucntion when they are implementd. These routes were also created using Express.js, the three routes that were made as of now are post for register, and login.(30 minutes)
+
+4) Create mongoDB schema and collection for user was done by Humza and was done so user data that is stored in the database is stored with the proper structure, this schema was
+   declared by mongoose and is named the userModel.(1 hour)
+
+5) Implemented Login and Register form when login button is clicked in NavBar was done by Chriss()
+
+6) Implement Redux store in root react component, with four states including user, openLogin, loading, and alert, This was done by Chriss to ensure we have a central store where
+   we can mangage the states that we need for all of our components. This was done so we can avoid the problem of prop drilling and avoid unecessary lines of code(1 hour)
+
+7) Implement Redux reducer for state to allow the manipulation of state elements. This was done by Chriss to allow changes to the store to be made without having the need to manually
+   call the store in each component and then switching the states mode.(2 hours)
+
+8) Login registration/login using google one tap login. This was done by Chriss
+
+9) Initialize authentication middleware in backend to verify authenticity of google login. This was done by Humza and was done so that users are given a google authentication
+   token are constantly having it checked when they are making requests while logged in. Once they make a request it will check with our authentication middleware and verify that
+   the corresponding token is the correct google one.(3 hours)
+
 
 
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
-1) …					
-2) …
+1) One problem we are having is adding an expiration time on the token that is assigned to the google one tap login user, we are trying to figure out a way to allow there token to expire.
+   We are currently trying to solve it, ther is not impact on the project time due to this.				
+2) Another issue we are having is 
 3) ...
 
 
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
-1) …
-2) …
-3) …
-
+1) Implement User Authentication of users of Travle Nest that are not using Google login, this will be done using JWT
+2) Implement User profile dropdown to change user name, and profile picture
+3) Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database
+4) Create get user, and create user, and update user endpoints which will be used by front end to allow users to login, register, and update there account
+5) Create login, register, action creators that will launch once login/registration forms are complete, and send a request to our API.
+6) Creat update profile action creator that will lauch once update button is clicked and send the updated user information to our API
+7) Implement update profile route, and function in backend that will change the users information in the database based on the data received.
+8) Implement expiration time on token given to google logged in users
+9) Refactor authentication middleware in backend to also authenticate the JWT token of active users to ensure it is not expired.
 
 D. Time log
 Total Number of Hours worked on the project this week per team member. 
-Last name: (x hrs), Last Name: (x hrs) ...
+Ahmad: 7 hours, Last Name: (x hrs) ...
 Total Weekly Team effort: x hours
