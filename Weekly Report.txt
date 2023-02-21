@@ -2,7 +2,9 @@ WEEK 1 (FEB 13- FEB 19)
 A. Weekly Accomplishments
 Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
 
-1) NavBar Creation with Login, register, and profile options. Chriss has completed the design of the website's navbar. When a user is not logged in, they are denied access to their user account, and the navbar only displays options to either log in or register. However, once a user logs in, they are granted access to their notifications, messages, and profile settings via the navbar. (4h)
+1) NavBar Creation with Login, register, and profile options. Chriss has completed the design of the website's navbar. When a user is not logged in, they are denied access to their
+   user account, and the navbar only displays options to either log in or register. However, once a user logs in, they are granted access to their notifications, messages, and profile
+   settings via the navbar. (4h)
 
 2) Initialized backend Node.js server and connection with mongoDB database. This was done by Humza and was done in order to have a running server where we can make our routes and API calls that will interact with the database.
    The backend was connected to our mongoDB database by using mongoose and providing our mongoDB collection string.(2 hours)
@@ -13,7 +15,8 @@ Describe what task was completed and by whom. Complete sentences, paragraphs, an
 4) Create mongoDB schema and collection for user was done by Humza and was done so user data that is stored in the database is stored with the proper structure, this schema was
    declared by mongoose and is named the userModel.(1 hour)
 
-5) Implemented Login and Register form when login button is clicked in NavBar. Chriss has completed the development of a login and registration form that enables each users to access their account. (2h)
+5) Implemented Login and Register form when login button is clicked in NavBar. Chriss has completed the development of a login and registration form that enables each users to access
+   their account. (2h)
 
 6) Implement Redux store in root react component, with four states including user, openLogin, loading, and alert, This was done by Chriss to ensure we have a central store where
    we can mangage the states that we need for all of our components. This was done so we can avoid the problem of prop drilling and avoid unecessary lines of code(1 hour)
@@ -21,11 +24,13 @@ Describe what task was completed and by whom. Complete sentences, paragraphs, an
 7) Implement Redux reducer for state to allow the manipulation of state elements. This was done by Chriss to allow changes to the store to be made without having the need to manually
    call the store in each component and then switching the states mode.(2 hours)
 
-8) Login registration/login using google one tap login. Chriss has finished implementing a login and registration feature that allows users either log into with different emails or to log in with just one tap using their Google account. Additionally, a user's profile was set up and allow user to modify their username, upload pictures with Firebase as storage, and provide a description. (4 hours)
+8) Login registration/login using google one tap login. Chriss has finished implementing a login and registration feature that allows users either log into with different emails
+   or to log in with just one tap using their Google account. Additionally, a user's profile was set up and allow user to modify their username, upload pictures with Firebase as
+   storage, and provide a description. (4 hours)
 
 9) Initialize authentication middleware in backend to verify authenticity of google login. This was done by Humza and was done so that users are given a google authentication
    token are constantly having it checked when they are making requests while logged in. Once they make a request it will check with our authentication middleware and verify that
-   the corresponding token is the correct google one.(3 hours)
+   the corresponding token is the correct google one.(4 hours)
 
 
 
@@ -33,8 +38,7 @@ B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
 1) One problem we are having is adding an expiration time on the token that is assigned to the google one tap login user, we are trying to figure out a way to allow there token to expire.
    We are currently trying to solve it, ther is not impact on the project time due to this.				
-2) Another issue we are having is 
-3) ...
+
 
 
 C. Next week’s planned work
@@ -51,5 +55,5 @@ What do you plan to work on next week? Complete sentences, paragraphs, and expla
 
 D. Time log
 Total Number of Hours worked on the project this week per team member. 
-Ahmad: 7 hours, Oboa: (8 hrs) 
-Total Weekly Team effort: 15 hours
+Ahmad: 8 hours, Oboa: 8 hours 
+Total Weekly Team effort: 16 hours
