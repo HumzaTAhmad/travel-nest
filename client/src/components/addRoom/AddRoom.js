@@ -1,12 +1,13 @@
 import { Box, Button, Stack, Step, StepButton, Stepper } from '@mui/material'
 import { Container } from '@mui/system'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddDetails from './addDetails/AddDetails'
 import AddImages from './addImages/AddImages'
 import AddLocation from './addLocation/AddLocation'
+import {connect} from 'react-redux'
 
-export default function AddRoom() {
-
+function AddRoom(props) {
+    const {images} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -33,6 +34,21 @@ export default function AddRoom() {
     const findUnfinished = () => {
         return steps.findIndex((step) => !step.completed);
     };
+
+    useEffect(()=>{
+        if(images.length){
+            if (!steps[2].completed) setComplete(2, true)
+        }else{
+            if (steps[2].completed) setComplete(2, false)
+        }
+    },[images])
+
+    const setComplete = (index, status) =>{
+        setSteps(steps=>{
+            steps[index].completed = status
+            return [...steps]
+        })
+    }
 
   return (
     <Container sx={{my:4}}>
@@ -63,3 +79,11 @@ export default function AddRoom() {
     </Container>
   )
 }
+
+function mapStateToProps(state){
+    return {
+        images: state.images
+    }
+}
+
+export default connect(mapStateToProps)(AddRoom);
