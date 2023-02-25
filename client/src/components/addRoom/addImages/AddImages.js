@@ -1,6 +1,7 @@
 import { Paper } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import ImagesList from './ImagesList';
 import ProgressList from './progressList/ProgressList';
 
 const AddImages = () => {
@@ -34,6 +35,7 @@ const AddImages = () => {
         </div>
       </Paper>
       <ProgressList {...{ files }} />
+      <ImagesList />
     </>
   );
 };
