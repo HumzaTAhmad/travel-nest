@@ -5,6 +5,8 @@ export default (state = [], action) => {
             return [...state, action.payload];
         case 'DELETE_IMAGE':
             return state.filter((image)=>image !== action.payload);
+        case 'RESET_ROOM':
+            return []
         default:
             return state
     }

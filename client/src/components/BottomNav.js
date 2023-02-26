@@ -17,7 +17,7 @@ export default function BottomNav() {
         {{
             0:<ClusterMap />,
             1:<Rooms />,
-            2:<AddRoom />
+            2:<AddRoom setPage={setValue}/> //passing setValue to add room so when room is created it will take us back
         }[value]}
         <Paper elevation={3} sx={{position:'fixed', bottom:0, left:0, right:0, zIndex:2}}>
             <BottomNavigation
