@@ -1,5 +1,5 @@
 import { Box } from '@mui/system'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { GeolocateControl, Marker, NavigationControl } from 'react-map-gl'
 import React from 'react'
 import {connect, useDispatch} from 'react-redux'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -25,6 +25,12 @@ function AddLocation(props) {
         longitude={lng}
         draggable
         onDragEnd={(e) => dispatch({type:'UPDATE_LOCATION', payload:{lng:e.lngLat.lng, lat:e.lngLat.lat}})}
+        />
+        <NavigationControl position='bottom-right' />
+        <GeolocateControl 
+        position='top-left'
+        trackUserLocation
+        onGeolocate={(e)=>dispatch({type:'UPDATE_LOCATION', payload:{lng:e.coords.longitude, lat:e.coords.latitude}})}
         />
       </ReactMapGL>
     </Box>
