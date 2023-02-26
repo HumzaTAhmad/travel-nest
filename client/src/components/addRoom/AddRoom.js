@@ -7,7 +7,7 @@ import AddLocation from './addLocation/AddLocation'
 import {connect} from 'react-redux'
 
 function AddRoom(props) {
-    const {images, details} = props
+    const {images, details, location} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -51,6 +51,14 @@ function AddRoom(props) {
         }
     },[details])
 
+    useEffect(()=>{
+        if(location.lng || location.lat) {
+            if (!steps[0].completed) setComplete(0, true)
+        }else{
+            if (steps[0].completed) setComplete(0, false)
+        }
+    },[location])
+
     const setComplete = (index, status) =>{
         setSteps((steps) =>{
             steps[index].completed = status
@@ -91,7 +99,8 @@ function AddRoom(props) {
 function mapStateToProps(state){
     return {
         images: state.images,
-        details: state.details
+        details: state.details,
+        location: state.location
     }
 }
 
