@@ -4,6 +4,8 @@ import ReactMapGL, { GeolocateControl, Marker, NavigationControl } from 'react-m
 import React, { useEffect, useRef } from 'react'
 import {connect, useDispatch} from 'react-redux'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import Geocoder from './Geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 function AddLocation(props) {
   const {location} = props
@@ -54,6 +56,7 @@ function AddLocation(props) {
         trackUserLocation
         onGeolocate={(e)=>dispatch({type:'UPDATE_LOCATION', payload:{lng:e.coords.longitude, lat:e.coords.latitude}})}
         />
+        <Geocoder />
       </ReactMapGL>
     </Box>
   )
