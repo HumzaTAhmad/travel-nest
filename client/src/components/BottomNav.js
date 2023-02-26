@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ClusterMap from './map/ClusterMap'
 import Rooms from './rooms/Rooms'
 import AddRoom from './addRoom/AddRoom'
+import Protected from './protected/Protected'
 
 export default function BottomNav() {
     const[value, setValue] = useState(0)
@@ -17,7 +18,11 @@ export default function BottomNav() {
         {{
             0:<ClusterMap />,
             1:<Rooms />,
-            2:<AddRoom setPage={setValue}/> //passing setValue to add room so when room is created it will take us back
+            2:(
+                <Protected>
+                    <AddRoom setPage={setValue}/> //passing setValue to add room so when room is created it will take us back
+                </Protected>
+            ), 
         }[value]}
         <Paper elevation={3} sx={{position:'fixed', bottom:0, left:0, right:0, zIndex:2}}>
             <BottomNavigation
