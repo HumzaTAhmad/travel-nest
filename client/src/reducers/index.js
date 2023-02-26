@@ -6,6 +6,7 @@ import loading from './loading';
 import rooms from './rooms';
 import profile from './profile';
 import images from './images';
+import details from './details';
 
 export default combineReducers({
     currentUser,
@@ -14,5 +15,6 @@ export default combineReducers({
     loading,
     rooms,
     profile,
-    images
+    images,
+    details
 })
