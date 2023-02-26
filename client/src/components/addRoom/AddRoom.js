@@ -4,11 +4,14 @@ import React, { useEffect, useState } from 'react'
 import AddDetails from './addDetails/AddDetails'
 import AddImages from './addImages/AddImages'
 import AddLocation from './addLocation/AddLocation'
-import {connect} from 'react-redux'
+import {connect, useDispatch} from 'react-redux'
 import { Send } from '@mui/icons-material'
+import { createRoom } from '../../actions/rooms'
+
 
 function AddRoom(props) {
-    const {images, details, location} = props
+    const dispatch = useDispatch();
+    const {images, details, location, currentUser} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -78,7 +81,15 @@ function AddRoom(props) {
     }, [steps])
 
     const handleSubmit = () => {
-        
+        const room = {
+            lng:location.lng,
+            lat:location.lat,
+            price:details.price,
+            title:details.title,
+            description:details.description,
+            images
+        }
+        createRoom(room, currentUser, dispatch)
     }
   return (
     <Container sx={{my:4}}>
@@ -122,7 +133,8 @@ function mapStateToProps(state){
     return {
         images: state.images,
         details: state.details,
-        location: state.location
+        location: state.location,
+        currentUser: state.currentUser
     }
 }
 
