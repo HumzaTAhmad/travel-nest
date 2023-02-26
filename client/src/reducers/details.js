@@ -1,5 +1,5 @@
 
-export default (state = {title: 'empty', description: 'empty', price:0}, action) => {
+export default (state = {title: "", description: "", price:0}, action) => {
     console.log(action.type)
     switch(action.type){
         case 'UPDATE_DETAILS':

@@ -2,6 +2,7 @@ import { FormControl, FormControlLabel, InputAdornment, Radio, RadioGroup, TextF
 import { Stack } from '@mui/system'
 import React, { useState } from 'react'
 import {connect, useDispatch} from 'react-redux'
+import InfoField from './InfoField'
 
 function AddDetails(props) {
 
@@ -23,11 +24,11 @@ function AddDetails(props) {
   }
 
   const handlePriceChange = (e) =>{
-    dispatch({type: 'UPDATE_DETAILS', payload:{price:e.target.value}})
+    dispatch({type: 'UPDATE_DETAILS', payload:{price: e.target.value}})
   }
 
   return (
-    <Stack sx={{alignItems: 'center', "&.MuiTextField":{width:'100%', maxWidth:500, m:1}}}>
+    <Stack sx={{alignItems: 'center', "& .MuiTextField-root":{width:'100%', maxWidth:500, m:1}}}>
       <FormControl>
         <RadioGroup name="costType" value={costType} row onChange={handleCostTypeChange}>
           <FormControlLabel value={0} control={<Radio />} label="Free Stay" />
@@ -49,6 +50,8 @@ function AddDetails(props) {
           )}
         </RadioGroup>
       </FormControl>
+      <InfoField mainProps={{name:'title', label:'Title', value:title}} minLength={5}/>
+      <InfoField mainProps={{name:'description', label:'Description', value:description}} minLength={10} optionalProps={{multiline:true, rows:4}}/>
     </Stack>
   )
 }
