@@ -7,7 +7,7 @@ import AddLocation from './addLocation/AddLocation'
 import {connect} from 'react-redux'
 
 function AddRoom(props) {
-    const {images} = props
+    const {images, details} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -43,10 +43,18 @@ function AddRoom(props) {
         }
     },[images])
 
+    useEffect(()=>{
+        if(details.title.length > 4 && details.description.length>9) {
+            if (!steps[1].completed) setComplete(1, true)
+        }else{
+            if (steps[1].completed) setComplete(1, false)
+        }
+    },[details])
+
     const setComplete = (index, status) =>{
-        setSteps(steps=>{
+        setSteps((steps) =>{
             steps[index].completed = status
-            return [...steps]
+            return [...steps] //if we didn't spread then it would just return steps in a new array but we want the useEffect to run
         })
     }
 
@@ -82,7 +90,8 @@ function AddRoom(props) {
 
 function mapStateToProps(state){
     return {
-        images: state.images
+        images: state.images,
+        details: state.details
     }
 }
 
