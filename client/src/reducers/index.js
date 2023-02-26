@@ -7,6 +7,7 @@ import rooms from './rooms';
 import profile from './profile';
 import images from './images';
 import details from './details';
+import location from './location';
 
 export default combineReducers({
     currentUser,
@@ -16,5 +17,6 @@ export default combineReducers({
     rooms,
     profile,
     images,
-    details
+    details,
+    location
 })
