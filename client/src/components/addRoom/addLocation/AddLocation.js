@@ -1,6 +1,7 @@
 import { Box } from '@mui/system'
+import axios from 'axios';
 import ReactMapGL, { GeolocateControl, Marker, NavigationControl } from 'react-map-gl'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import {connect, useDispatch} from 'react-redux'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -8,10 +9,31 @@ function AddLocation(props) {
   const {location} = props
   const {lng, lat} = location
   const dispatch = useDispatch()
-  console.log(process.env.REACT_APP_MAP_TOKEN)
+ 
+  const mapRef = useRef()
+  useEffect(() =>{
+    if(!lng && !lat){
+      axios.get('https://ipapi.co/json')
+        .then((response) => {
+          const data = response.data;
+          mapRef.current.flyTo({
+            center: [data.longitude, data.latitude],
+          });
+          dispatch({
+            type: 'UPDATE_LOCATION',
+            payload: { lng: data.longitude, lat: data.latitude },
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [])
+
   return (
     <Box sx={{height:400, position:'relative'}}>
       <ReactMapGL
+      ref={mapRef}
       mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN}
       initialViewState={{
         longitude: lng,
