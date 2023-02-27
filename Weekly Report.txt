@@ -64,6 +64,8 @@ Total Number of Hours worked on the project this week per team member.
 Ahmad: 8 hours, Oboa: 8 hours 
 Total Weekly Team effort: 16 hours
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 WEEK 2 (FEB 20 - FEB 26)
 Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
 A. Weekly Accomplishments
