@@ -63,3 +63,48 @@ D. Time log
 Total Number of Hours worked on the project this week per team member. 
 Ahmad: 8 hours, Oboa: 8 hours 
 Total Weekly Team effort: 16 hours
+
+WEEK 2 (FEB 20 - FEB 26)
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+A. Weekly Accomplishments
+1) Implemented  User Authentication of users of Travel Nest that are not using Google login. This was implemented by Humza and was done by creating a hashed password for the user
+   using and storing it in the database, when the user enters the form to login it will encrpyt the inputted password and compare it with the one in the database and the user will
+   be verified. JWT token for user is also created when they login or register. *Expiration time still being worked on (3 hours)
+2) Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
+   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
+   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
+   file. (3 hours)
+3) Create get user, and create user, and update user endpoints which will be used by front end to allow users to login, register, and update there account. This was done by Humza
+   and was by creating a user controller file with these three functions. Each of the functions interact with the mongoDB database in the user collection.(6 hours)
+4) Create login, register action creators that will launch once login/registration forms are complete, and send a request to our API. This was done by Chriss and was implemented by
+   creating three functions that all send http request to the backend given the URL that matches the route in the backend. Login will call the getUser endpoint, Register will call The
+   creatUser end point.(5 hours)
+5) Create update profile action creator that will lauch once update button is clicked and send the updated user information to our API. This was done by Humza and was done by adding
+   another functin to the user action creator file. This function will the new information of the user and send a http request to the backend using the proper route URL and hit the
+   updateProfile endpoint.(3 hours)
+6) Implemented update profile route, and function in backend that will change the users information in the database based on the data received. This was done by Chriss to allow
+   the requested data to update user in the database to hit the correct endpoint function, in this case updateProfile(30 min)
+7) Refactored authentication middleware in backend to also authenticate the JWT token of active users to ensure it is not expired. This middleware function was done by Chriss/Humza
+   will run on every request to our API and will check the current user token and verify if it is an active token. If the token's length is greater than 1000, it assumes that
+   it is a Google ID token and verifies it using the verifyIdToken(). If the token's length is less than or equal to 1000, it assumes that it is a JSON Web Token (JWT) and verifies
+   it using the jwt.verify() method of the jsonwebtoken package.If the token is successfully verified, the function extracts the user information from the token and adds it to the
+   req object as a new user property. This user object contains the user's ID, name, and photo URL. The function then calls the next callback to pass control to the next middleware
+   or route handler(3 hours each, so 6 hours)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) Having trouble connecting to Mapbox, not a huge problem we were planning on also having it connected with our project sooner. Does not affect project schedule	
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures
+2) Implement mapbox in room creation process to show global map to user
+3) Create REST endpoint for the creation of rooms
+4) Implement post route for the creation of rooms, include authentication middleware in this call
+5) Update redux state to include description object in global redux store, this will allow us to have a place to store the users room info until they submit it
+6) Create roomModel schema in mongoDB database to specify the structure of room database entries
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 13 hours, Oboa: 13 hours 
+Total Weekly Team effort: 26 hours
