@@ -1,7 +1,7 @@
 export default (state = [], action) => {
     switch (action.type){
-        case 'CREATE_ROOM':
-            return [...state, ...action.payload];
+        case 'UPDATE_ROOMs':
+            return [...state, action.payload];
         default:
             return state;
     }
