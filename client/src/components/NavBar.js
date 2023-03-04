@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {AppBar, Box, Button, Container, IconButton, Toolbar, Typography} from '@mui/material';
 import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu} from '@mui/icons-material';
 import UserIcons from './user/UserIcons';
-
+import Sidebar from './sidebar/Sidebar'
 
 function NavBar(props) {
 
@@ -11,13 +11,15 @@ function NavBar(props) {
     const dispatch = useDispatch();
 
 
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
             <AppBar>
                 <Container maxWidth='lg'>
                     <Toolbar disableGutters>
                         <Box sx={{mr:1}}>
-                            <IconButton size='large' color='inherit'>
+                            <IconButton size='large' color='inherit' onClick={()=>setIsOpen(true)}>
                                 <Menu />
                             </IconButton>
                         </Box>
@@ -36,6 +38,7 @@ function NavBar(props) {
                 </Container>
             </AppBar>
             <Toolbar />
+            <Sidebar {...{isOpen, setIsOpen}}/>
         </>
     )
 }
