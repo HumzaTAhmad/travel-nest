@@ -11,7 +11,7 @@ function Rooms(props) {
 
   return (
     <Container>
-      <ImageList gap={12} sx={{mb:8}}>
+      <ImageList gap={12} sx={{mb:8, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))!important'}}>
         {
           rooms.map(room=>(
             <Card key={room._id}>
