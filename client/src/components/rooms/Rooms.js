@@ -29,7 +29,7 @@ function Rooms(props) {
                   }
                   position='top'
                 />
-                <img src={room.images[0]} alt={room.title} loading='lazy' style={{cursor:'pointer'}}/>
+                <img src={room.images[0]} alt={room.title} loading='lazy' style={{cursor:'pointer'}} onClick={()=>dispatch({type:'UPDATE_ROOM', payload:room})}/>
                 <ImageListItemBar
                 title={room.title}
                 actionIcon={

@@ -4,6 +4,7 @@ import BottomNav from './components/BottomNav';
 import Loading from './components/Loading';
 import NavBar from './components/NavBar';
 import Notifications from './components/Notifications';
+import Room from './components/rooms/Room';
 import Login from './components/user/Login';
 
 function App(props) {
@@ -17,6 +18,7 @@ function App(props) {
             <Login />
             <NavBar containerRef={containerRef}/>
             <BottomNav mapRef={mapRef} containerRef={containerRef}/>
+            <Room />
         </>
     )
 }

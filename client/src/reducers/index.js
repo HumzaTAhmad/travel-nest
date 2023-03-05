@@ -10,6 +10,7 @@ import details from './details';
 import location from './location';
 import priceFilter from './priceFilter'
 import addressFilter from './addressFilter';
+import room from './room';
 
 export default combineReducers({
     currentUser,
@@ -22,5 +23,6 @@ export default combineReducers({
     details,
     location,
     priceFilter,
-    addressFilter
+    addressFilter,
+    room
 })
