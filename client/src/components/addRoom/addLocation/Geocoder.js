@@ -13,7 +13,7 @@ export default function Geocoder() {
     useControl(()=>ctrl)
     ctrl.on('result', (e)=>{
         const coords = e.result.geometry.coordinates
-        dispatch({type:'UPDATE_LOCATOIN', payload:{lng:coords[0], lat:coords[1]}})
+        dispatch({type:'UPDATE_LOCATION', payload:{lng:coords[0], lat:coords[1]}})
     })
   return (
     null
