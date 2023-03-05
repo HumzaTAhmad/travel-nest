@@ -9,13 +9,14 @@ import Login from './components/user/Login';
 function App(props) {
 
     const mapRef = useRef()
+    const containerRef = useRef()
     return (
         <>
             <Loading />
             <Notifications />
             <Login />
-            <NavBar />
-            <BottomNav mapRef={mapRef}/>
+            <NavBar containerRef={containerRef}/>
+            <BottomNav mapRef={mapRef} containerRef={containerRef}/>
         </>
     )
 }

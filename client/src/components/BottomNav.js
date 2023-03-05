@@ -7,7 +7,7 @@ import Rooms from './rooms/Rooms'
 import AddRoom from './addRoom/AddRoom'
 import Protected from './protected/Protected'
 
-export default function BottomNav({mapRef}) {
+export default function BottomNav({mapRef, containerRef}) {
     const[value, setValue] = useState(0)
     const ref = useRef()
     useEffect(()=>{
@@ -16,7 +16,7 @@ export default function BottomNav({mapRef}) {
   return (
     <Box ref={ref}>
         {{
-            0:<ClusterMap mapRef={mapRef}/>,
+            0:<ClusterMap mapRef={mapRef} containerRef={containerRef}/>,
             1:<Rooms />,
             2:(
                 <Protected>

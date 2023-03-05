@@ -5,9 +5,8 @@ import {Lock, Menu} from '@mui/icons-material';
 import UserIcons from './user/UserIcons';
 import Sidebar from './sidebar/Sidebar'
 
-function NavBar(props) {
+function NavBar({currentUser, containerRef}) {
 
-    const {currentUser} = props
     const dispatch = useDispatch();
 
 
@@ -38,7 +37,7 @@ function NavBar(props) {
                 </Container>
             </AppBar>
             <Toolbar />
-            <Sidebar {...{isOpen, setIsOpen}}/>
+            <Sidebar {...{isOpen, setIsOpen, containerRef}}/>
         </>
     )
 }

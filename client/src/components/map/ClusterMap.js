@@ -5,16 +5,16 @@ import ReactMapGL, { Marker } from 'react-map-gl';
 import Supercluster from 'supercluster';
 import './cluster.css';
 import { Avatar, Paper, Tooltip } from '@mui/material';
+import Geocoder from '../addRoom/addLocation/Geocoder';
+import GeocoderInput from '../sidebar/GeocoderInput';
 
 const supercluster = new Supercluster({
   radius: 75,
   maxZoom: 20,
 });
 
-const ClusterMap = (props) => {
+const ClusterMap = ({rooms, mapRef, containerRef}) => {
   
-  const rooms = props.rooms
-  const mapRef = props.mapRef
   const dispatch = useDispatch()
 
   const [points, setPoints] = useState([]);
@@ -117,6 +117,7 @@ const ClusterMap = (props) => {
           </Marker>
         );
       })}
+      <GeocoderInput mapRef={mapRef} containerRef={containerRef} />
     </ReactMapGL>
   );
 };

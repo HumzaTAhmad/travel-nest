@@ -12,7 +12,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-export default function Sidebar({isOpen, setIsOpen}) {
+export default function Sidebar({isOpen, setIsOpen, containerRef}) {
   return (
     <Drawer
     variant='persistent'
@@ -26,6 +26,7 @@ export default function Sidebar({isOpen, setIsOpen}) {
             </IconButton>
         </DrawerHeader>
         <Box sx={{width:240, p:3}}>
+            <Box ref={containerRef}></Box>
             <PriceSlider />
         </Box>
     </Drawer>

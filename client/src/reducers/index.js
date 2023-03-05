@@ -9,6 +9,7 @@ import images from './images';
 import details from './details';
 import location from './location';
 import priceFilter from './priceFilter'
+import addressFilter from './addressFilter';
 
 export default combineReducers({
     currentUser,
@@ -20,5 +21,6 @@ export default combineReducers({
     images,
     details,
     location,
-    priceFilter
+    priceFilter,
+    addressFilter
 })
