@@ -8,6 +8,7 @@ import profile from './profile';
 import images from './images';
 import details from './details';
 import location from './location';
+import priceFilter from './priceFilter'
 
 export default combineReducers({
     currentUser,
@@ -18,5 +19,6 @@ export default combineReducers({
     profile,
     images,
     details,
-    location
+    location,
+    priceFilter
 })

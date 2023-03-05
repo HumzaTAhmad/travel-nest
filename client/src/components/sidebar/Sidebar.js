@@ -1,6 +1,8 @@
 import { Box, Drawer, IconButton, styled, Typography } from '@mui/material'
 import { ChevronLeft } from '@mui/icons-material'
 
+import PriceSlider from './PriceSlider';
+
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -23,7 +25,9 @@ export default function Sidebar({isOpen, setIsOpen}) {
                 <ChevronLeft fontSize='large'/>
             </IconButton>
         </DrawerHeader>
-        <Box sx={{width:240, p:3}}></Box>
+        <Box sx={{width:240, p:3}}>
+            <PriceSlider />
+        </Box>
     </Drawer>
   )
 }
