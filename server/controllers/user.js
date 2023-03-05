@@ -3,6 +3,7 @@ import userModel from '../models/User.js'
 import { JWT } from 'google-auth-library'
 import jwt from 'jsonwebtoken'
 import tryCatch from './utils/tryCatch.js'
+import roomModel from '../models/Room.js'
 
 export const createUser = async (req, res) => {
     try {
@@ -60,8 +61,8 @@ export const updateProfile = tryCatch(async (req, res) => {
   const updatedUser = await userModel.findByIdAndUpdate(req.user.id, req.body, {new:true})
   const {_id:id, name, photoURL} = updatedUser
 
-
-  //to do: update all the rooms records added by the user
+  //to do: update all the rooms records added by the user so old name and picture don't stay there forever
+  await roomModel.updateMany({uid:id}, {uName:name, uPhoto: photoURL})
 
   const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
     expiresIn: '1h',
