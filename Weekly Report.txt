@@ -110,3 +110,49 @@ D. Time log
 Total Number of Hours worked on the project this week per team member. 
 Ahmad: 13 hours, Oboa: 13 hours 
 Total Weekly Team effort: 26 hours
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WEEK 3 (FEB 27 - MAR 5)
+A. Weekly Accomplishments
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures. This was implemented by Chriss and allows the user
+   to go through a three step process that allows them to add there room to rooms listing. The first step allows the user to select the location of there room. The next step allows the
+   user to enter the room details such as the price, title, and description of the room. The last step allows the user to add images of there room. Which then allows them to submit it. (5 hours)
+2) Implement mapbox in room creation process to show global map to user. This was implemented by Chriss and was done by creating a mapbox token and inserting it into our program environment.
+   This token was then passed into the mapbox component and used to display the geographical map to the user which allows them to move there marker to the location there room is located. (3 hours)
+3) Create REST endpoint for the retrieval and creation of rooms. This was done by Humza and was done so after the user submits there room form, their room information will be saved in
+   the mondoDB database. This was done by using mongoose to save the created user room. The getRoom controller was added so a list of rooms can be displayed for the user when that feature
+   is eventually added, this was done by using the find function in mongoose that will connect our server to the database.(5 hours)
+4) Implement post route for the creation of rooms, include authentication middleware in this call. This was done by Humza and was done so only calls to the server with the corresponding
+   route address can hit our room endpoints. Added the authentication middleware for this route so users who have been logged in for too long, or are not allowed this functionality will
+   be signed out.(30 min)
+5) Update redux state to include details object in global redux store, this will allow us to have a place to store the users room info until they submit it. This was implemented by
+   Humza and was done so the information that is entered by the user about the rooms in the creation of room steps will be saved. This will ensure when they move on to different steps
+   their previous information is saved and not wiped out.(2 hours)
+6) Create roomModel schema in mongoDB database and model folder to specify the structure of room database entries. This was done by Humza and was done so we have a seperate collection for only room
+   entries. this schema will have a structure that will only contain information about the room such as longitude, latitude, price, title, description, images, user id, user name,
+   and user photo.(1 hour)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) We are runnning into a problem with the filter feature. The logic behind filtering by price and address is getting complex since we will have to manipulate many states in our
+   redux store for this filtering feature to work as intended. We have a rough solution in mind, but we are planning on skipping this and coming back to it at the end once we have
+   our KNN reccomendation engine completed. Alot of time this week was wasted on trying to implement this, so skipping this is the best option for now.
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Implement Geolocator controller button to find the user specific location when creating room
+2) Create search bar on mapbox that will allow user to search up specific address and locate to that specific location
+3) Implement Geolocator controller button to find the user specific location when creating room
+4) Create action creator in front end called createRoom that will send a http post request to backend and store room in database
+5) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database
+6) Implement React Real time Check and typing
+7) Implement section to view all rooms as list
+8) Research K-NN algorithm and implement implement with mock data
+
+D. Time log
+Total Number of Hours worked on the project this week per team member.
+Ahmad: 15 hours
+Chriss: 15 hours
+Total Weekly Team effort: 30 hours
