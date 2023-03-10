@@ -6,6 +6,9 @@ import NavBar from './components/NavBar';
 import Notifications from './components/Notifications';
 import Room from './components/rooms/Room';
 import Login from './components/user/Login';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Dashboard from './pages/dashboard/Dashboard';
+import Home from './pages/Home';
 
 function App(props) {
 
@@ -13,12 +16,12 @@ function App(props) {
     const containerRef = useRef()
     return (
         <>
-            <Loading />
-            <Notifications />
-            <Login />
-            <NavBar containerRef={containerRef}/>
-            <BottomNav mapRef={mapRef} containerRef={containerRef}/>
-            <Room />
+         <BrowserRouter>
+         <Routes>
+            <Route path='dashboard/*' element={<Dashboard />}/>
+            <Route path='*' element={<Home />}/>
+         </Routes>
+         </BrowserRouter>
         </>
     )
 }
