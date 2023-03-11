@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function Messages() {
-  return (
-    <div>Messages</div>
-  )
+export default function Messages({setSelectedLink, link}) {
+
+    useEffect(()=>{
+        setSelectedLink(link)
+    }, [])
+
+    return (
+        <div>Messages</div>
+    )
 }

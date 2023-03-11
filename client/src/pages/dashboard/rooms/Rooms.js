@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function Rooms() {
-  return (
-    <div>Rooms</div>
-  )
+export default function Rooms({setSelectedLink, link}) {
+
+    useEffect(()=>{
+        setSelectedLink(link)
+    }, [])
+
+    return (
+        <div>Rooms</div>
+    )
 }

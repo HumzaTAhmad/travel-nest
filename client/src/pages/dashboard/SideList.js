@@ -1,7 +1,7 @@
 import {ChevronLeft,Dashboard,Inbox,KingBed,Logout,Mail,MarkChatUnread, NotificationsActive,PeopleAlt,} from '@mui/icons-material';
 import {Avatar,Box,Divider,IconButton,List,ListItem,ListItemButton,ListItemIcon,ListItemText,styled,Tooltip,Typography,} from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Main from './main/Main';
@@ -66,12 +66,14 @@ function SideList({open, setOpen, currentUser}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const [selectedLink, setSelectedLink] = useState('')
+
   const list = useMemo(()=>[
-    {title:'Main', icon:<Dashboard/>, link:'', component:<Main />},
-    {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users />},
-    {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms />},
-    {title:'Requests', icon:<NotificationsActive/>, link:'requests', component:<Requests />},
-    {title:'Messages', icon:<MarkChatUnread/>, link:'messages', component:<Messages />},
+    {title:'Main', icon:<Dashboard/>, link:'', component:<Main setSelectedLink={setSelectedLink} link={''}/>},
+    {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users setSelectedLink={setSelectedLink} link={'users'}/>},
+    {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms setSelectedLink={setSelectedLink} link={'rooms'}/>},
+    {title:'Requests', icon:<NotificationsActive/>, link:'requests', component:<Requests setSelectedLink={setSelectedLink} link={'requests'}/>},
+    {title:'Messages', icon:<MarkChatUnread/>, link:'messages', component:<Messages setSelectedLink={setSelectedLink} link={'messages'}/>},
   ], [])
 
   const handleLogout = () => {
@@ -98,6 +100,7 @@ function SideList({open, setOpen, currentUser}) {
                   px: 2.5,
                 }}
                 onClick={()=>navigate(item.link)}
+                selected={selectedLink === item.link}
               >
                 <ListItemIcon
                   sx={{
