@@ -1,8 +1,14 @@
 import {ChevronLeft,Dashboard,Inbox,KingBed,Logout,Mail,MarkChatUnread, NotificationsActive,PeopleAlt,} from '@mui/icons-material';
 import {Avatar,Box,Divider,IconButton,List,ListItem,ListItemButton,ListItemIcon,ListItemText,styled,Tooltip,Typography,} from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
+import { useMemo } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Main from './main/Main';
+import Messages from './messages/Messages';
+import Requests from './requests/Requests';
+import Rooms from './rooms/Rooms';
+import Users from './users/Users';
 
 const drawerWidth = 240;
 
@@ -60,6 +66,14 @@ function SideList({open, setOpen, currentUser}) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const list = useMemo(()=>[
+    {title:'Main', icon:<Dashboard/>, link:'', component:<Main />},
+    {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users />},
+    {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms />},
+    {title:'Requests', icon:<NotificationsActive/>, link:'requests', component:<Requests />},
+    {title:'Messages', icon:<MarkChatUnread/>, link:'messages', component:<Messages />},
+  ], [])
+
   const handleLogout = () => {
     dispatch({type:'UPDATE_USER', payload:null})
     navigate('/')
@@ -67,7 +81,7 @@ function SideList({open, setOpen, currentUser}) {
 
   return (
     <>
-          <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={()=>setOpen(false)}>
             <ChevronLeft />
@@ -75,14 +89,15 @@ function SideList({open, setOpen, currentUser}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {list.map((item) => (
+            <ListItem key={item.title} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate(item.link)}
               >
                 <ListItemIcon
                   sx={{
@@ -91,9 +106,9 @@ function SideList({open, setOpen, currentUser}) {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -122,7 +137,11 @@ function SideList({open, setOpen, currentUser}) {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-
+        <Routes>
+          {list.map((item) => (
+            <Route key={item.title} path={item.link} element={item.component} />
+          ))}
+        </Routes>
       </Box>
     </>
   )
