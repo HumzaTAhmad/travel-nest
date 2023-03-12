@@ -6,6 +6,7 @@ import { getUsers } from '../../../actions/user'
 import { connect, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { grey } from '@mui/material/colors'
+import UsersActions from './UsersActions'
 
 function Users({setSelectedLink, link, users}) {
 
@@ -57,6 +58,8 @@ const dispatch = useDispatch()
       {
         field: 'actions',
         headerName: 'Actions',
+        type:'actions',
+        renderCell:params=><UsersActions {...{params, rowId, setRowId}}/>
       },
     ],
     [rowId]
