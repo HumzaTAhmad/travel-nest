@@ -14,7 +14,7 @@ function Main({setSelectedLink, link, users, rooms}) {
     useEffect(()=>{
         setSelectedLink(link)
         if(rooms.length === 0) getRooms(dispatch)
-        if(rooms.length === 0) getUsers(dispatch)
+        if(users.length === 0) getUsers(dispatch)
     }, [])
 
     return (
