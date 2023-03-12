@@ -7,6 +7,7 @@ import { getRooms } from '../../../actions/rooms'
 import { getUsers } from '../../../actions/user'
 import moment from 'moment'
 import PieRoomsCost from './PieRoomsCost'
+import AreaRoomsUsers from './AreaRoomsUsers'
 
 function Main({setSelectedLink, link, users, rooms}) {
 
@@ -14,8 +15,8 @@ function Main({setSelectedLink, link, users, rooms}) {
 
     useEffect(()=>{
         setSelectedLink(link)
-        if(rooms.length === 0) getRooms(dispatch)
-        if(users.length === 0) getUsers(dispatch)
+        getRooms(dispatch)
+        getUsers(dispatch)
     }, [])
 
     return (
@@ -98,6 +99,9 @@ function Main({setSelectedLink, link, users, rooms}) {
             </Paper>
             <Paper elevation={3} sx={{p:2, gridColumn:'1/3'}}>
                 <PieRoomsCost />
+            </Paper>
+            <Paper elevation={3} sx={{p:2, gridColumn:'1/3'}}>
+                <AreaRoomsUsers />
             </Paper>
         </Box>
     )

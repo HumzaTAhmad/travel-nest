@@ -68,6 +68,6 @@ export const getUsers = async(dispatch) => {
   const result = await fetchData({url, method:'GET'}, dispatch)
   console.log(result)
   if(result){
-      dispatch({type:'UPDATE_USERS', payload:result})
+      dispatch({type:'UPDATE_ALL_USERS', payload:result})
   }
 }
