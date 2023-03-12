@@ -6,6 +6,7 @@ import { connect, useDispatch } from 'react-redux'
 import { getRooms } from '../../../actions/rooms'
 import { getUsers } from '../../../actions/user'
 import moment from 'moment'
+import PieRoomsCost from './PieRoomsCost'
 
 function Main({setSelectedLink, link, users, rooms}) {
 
@@ -94,6 +95,9 @@ function Main({setSelectedLink, link, users, rooms}) {
                         ))}
                     </List>
                 </Box>
+            </Paper>
+            <Paper elevation={3} sx={{p:2, gridColumn:'1/3'}}>
+                <PieRoomsCost />
             </Paper>
         </Box>
     )

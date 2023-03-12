@@ -1,5 +1,5 @@
 import { Close, Favorite, FavoriteBorder, HeartBroken, HeatPumpSharp, Star, StarBorder, ThumbsUpDown } from '@mui/icons-material'
-import { AppBar, Avatar, Dialog, IconButton, Rating, Slide, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Avatar, Button, Dialog, IconButton, Rating, Slide, Toolbar, Tooltip, Typography } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
 import React, { forwardRef, useEffect, useState } from 'react'
 import { Box, Container, Stack } from '@mui/system';
@@ -49,7 +49,6 @@ const Room = ({room}) => {
           </Toolbar>
         </AppBar>
         <Container sx={{ pt: 5 }}>
-          <FavoriteBorder/>
           <Swiper
             modules={[Navigation, Autoplay, EffectCoverflow, Zoom]}
             centeredSlides
@@ -146,6 +145,11 @@ const Room = ({room}) => {
                 {'Details: '}
               </Typography>
               <Typography component="span">{room?.description}</Typography>
+            </Stack>
+            <Stack>
+              <Typography variant="h6" component="span">
+                {'Favorite this Room: '} <Button><FavoriteBorder/></Button>
+              </Typography>
             </Stack>
           </Stack>
         </Container>

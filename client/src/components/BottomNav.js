@@ -1,4 +1,4 @@
-import { AddLocationAlt, Bed, LocationOn } from '@mui/icons-material'
+import { AddLocationAlt, Bed, BedroomParent, LocationOn, Map } from '@mui/icons-material'
 import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useEffect, useRef, useState } from 'react'
@@ -28,11 +28,12 @@ export default function BottomNav({mapRef, containerRef}) {
             <BottomNavigation
             showLabels
             value={value}
+            sx={{ backgroundColor: '#EEA47FFF' }}
             onChange={(e, newValue) => setValue(newValue)}
             >
-                <BottomNavigationAction label='Map' icon={<LocationOn />} />
-                <BottomNavigationAction label='Rooms' icon={<Bed />} />
-                <BottomNavigationAction label='Add' icon={<AddLocationAlt />} />
+                <BottomNavigationAction label='Map' icon={<Map />} sx={{ color: '#00539CFF' }}/>
+                <BottomNavigationAction label='Rooms' icon={<BedroomParent sx={{ color: '#00539CFF' }}/>} />
+                <BottomNavigationAction label='Add' icon={<AddLocationAlt sx={{ color: '#00539CFF' }}/>} />
 
             </BottomNavigation>
         </Paper>
