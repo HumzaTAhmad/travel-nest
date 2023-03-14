@@ -30,7 +30,7 @@ export const createUser = async (req, res) => {
     }
 }
 
-export const getUser = tryCatch(async (req, res) => {
+export const login = tryCatch(async (req, res) => {
     const { email, password } = req.body;
     const emailLowerCase = email.toLowerCase();
     const existedUser = await userModel.findOne({ email: emailLowerCase });
@@ -44,14 +44,14 @@ export const getUser = tryCatch(async (req, res) => {
         .status(400)
         .json({ success: false, message: 'Invalid credentials' });
   
-    const { _id: id, name, photoURL, role, active } = existedUser;
+    const { _id: id, name, photoURL, role, active, favoriteRooms } = existedUser;
     if(!active) return res.status(400).json({success:false, message:'This account has been suspended. Contact Admin'})
     const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
     res.status(200).json({
       success: true,
-      result: { id, name, email: emailLowerCase, photoURL, token, role, active},
+      result: { id, name, email: emailLowerCase, photoURL, token, role, active, favoriteRooms},
     });
   });
 
@@ -76,8 +76,48 @@ export const getUsers = tryCatch(async (req, res) => {
   res.status(200).json({success:true, result:users})
 })
 
+export const getUser = tryCatch(async (req, res) => {
+  const userId = req.params.userId;
+  const user = await userModel.findById(userId).lean().exec(); // Use lean() to get plain JS object
+
+  if (!user) {
+    return res.status(404).json({ success: false, error: 'User not found' });
+  }
+
+  // Convert _id field to id field
+  user.id = user._id.toString();
+  delete user._id, user.password, user.token;
+
+  res.status(200).json({ success: true, result: user });
+});
+
 export const updateStatus = tryCatch(async(req, res)=>{
   const {role, active} = req.body
   await userModel.findByIdAndUpdate(req.params.userId, {role, active})
   res.status(200).json({success:true, result:{_id:req.params.userId}})
+})
+
+export const addToFavorite = tryCatch(async(req, res)=>{
+  const newFavoriteRoom = req.body
+  const userId = req.params.userId;
+
+  console.log(newFavoriteRoom)
+
+  const user = await userModel.findById(userId);
+
+  // Add the new favorite room object to the favoriteRooms array
+  user.favoriteRooms.push(newFavoriteRoom);
+
+  // Save the updated user document
+  await user.save();
+
+  const updatedUser = await userModel.findById(userId).lean().exec(); // Use lean() to get plain JS object
+
+  if (!updatedUser) {
+    return res.status(404).json({ success: false, error: 'User not found' });
+  }
+
+  user.id = user._id.toString();
+  delete user._id, user.password, user.token;
+  res.status(200).json({ success: true, result: updatedUser });
 })

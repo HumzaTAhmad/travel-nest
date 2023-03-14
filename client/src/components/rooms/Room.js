@@ -1,4 +1,4 @@
-import { Close, Favorite, FavoriteBorder, HeartBroken, HeatPumpSharp, Star, StarBorder, ThumbsUpDown } from '@mui/icons-material'
+import { Close, Favorite, FavoriteBorder, StarBorder, ThumbsUpDown } from '@mui/icons-material'
 import { AppBar, Avatar, Button, Dialog, IconButton, Rating, Slide, Toolbar, Tooltip, Typography } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
 import React, { forwardRef, useEffect, useState } from 'react'
@@ -10,12 +10,14 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/zoom'
 import './swiper.css'
+import { addToFavorite, getUser } from '../../actions/user';
 
 const Transition = forwardRef((props, ref)=>{
     return <Slide direction='up' {...props} ref={ref} />
 })
 
-const Room = ({room}) => {
+const Room = ({room, currentUser}) => {
+    console.log(currentUser)
     const dispatch = useDispatch()
     const [place, setPlace] = useState(null);
   
@@ -31,6 +33,15 @@ const Room = ({room}) => {
     const handleClose = () => {
       dispatch({ type: 'UPDATE_ROOM', payload: null });
     };
+
+    const handleClick = () =>{
+      console.log(currentUser.id)
+      addToFavorite(room, currentUser.id, dispatch)
+    }
+    
+    const isRoomFavorited = currentUser?.favoriteRooms?.some((favRoom) => favRoom?._id === room?._id);
+    console.log(isRoomFavorited)
+
     return (
       <Dialog
         fullScreen
@@ -148,8 +159,8 @@ const Room = ({room}) => {
             </Stack>
             <Stack>
               <Typography variant="h6" component="span">
-                {'Favorite this Room: '} <Button><FavoriteBorder/></Button>
-              </Typography>
+                {'Favorite this Room: '} <Button onClick={handleClick}>{isRoomFavorited ? <Favorite /> : <FavoriteBorder />}</Button>
+              </Typography>    
             </Stack>
           </Stack>
         </Container>
@@ -160,7 +171,8 @@ const Room = ({room}) => {
 function mapStateToProps(state) {
     console.log(state)
     return {
-      room: state.room
+      room: state.room,
+      currentUser: state.currentUser
     };
   }
   

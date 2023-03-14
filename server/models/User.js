@@ -10,7 +10,8 @@ const userSchema = mongoose.Schema({
         default:'basic',
         enum:['basic', 'editor', 'admin']
     },
-    active:{type:Boolean, default:true}
+    active:{type:Boolean, default:true},
+    favoriteRooms:{type:Array, default:[]}
 },
 {timestamps:true}
 )

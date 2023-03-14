@@ -72,6 +72,21 @@ export const getUsers = async(dispatch) => {
   }
 }
 
+export const getUser = async (userId, dispatch)=>{
+  console.log(userId)
+  const result = await fetchData({
+    url:`${url}/${userId}`,
+    method:'GET',
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
+}
+
+
 export const updateStatus = (updatedFields, userId, dispatch)=>{
   return fetchData({
     url:`${url}/updateStatus/${userId}`,
@@ -80,4 +95,20 @@ export const updateStatus = (updatedFields, userId, dispatch)=>{
   },
   dispatch
   )
+}
+
+//this function will add the selected room into the specific user favorites array
+export const addToFavorite = async (room, userId, dispatch)=>{
+  console.log(userId)
+  const result =  await fetchData({
+    url:`${url}/addToFavorite/${userId}`,
+    method:'PATCH',
+    body:room,
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
 }

@@ -1,3 +1,4 @@
+import { addToFavorite } from "./user"
 import fetchData from "./utils/fetchData"
 
 

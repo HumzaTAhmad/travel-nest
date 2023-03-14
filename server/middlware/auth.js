@@ -5,9 +5,8 @@ import jwt from "jsonwebtoken";
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
 async function auth(req, res, next){
-    console.log('auth runs')
+    console.log(req.headers.authorization)
     try {
-        
         const token = req.headers.authorization.split(' ')[1]
         if(token.length > 1000){
             const ticket = await client.verifyIdToken({
