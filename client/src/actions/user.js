@@ -112,3 +112,18 @@ export const addToFavorite = async (room, userId, dispatch)=>{
     dispatch({type:'UPDATE_USER', payload:result})
   }
 }
+
+export const removeFromFavorite = async (room, userId, dispatch)=>{
+  console.log(userId)
+  const result =  await fetchData({
+    url:`${url}/removeFromFavorite/${userId}`,
+    method:'PATCH',
+    body:room,
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
+}

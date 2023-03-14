@@ -10,7 +10,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/zoom'
 import './swiper.css'
-import { addToFavorite, getUser } from '../../actions/user';
+import { addToFavorite, getUser, removeFromFavorite } from '../../actions/user';
 
 const Transition = forwardRef((props, ref)=>{
     return <Slide direction='up' {...props} ref={ref} />
@@ -35,8 +35,11 @@ const Room = ({room, currentUser}) => {
     };
 
     const handleClick = () =>{
-      console.log(currentUser.id)
-      addToFavorite(room, currentUser.id, dispatch)
+      if(isRoomFavorited){
+        removeFromFavorite(room, currentUser.id, dispatch)
+      }else{
+        addToFavorite(room, currentUser.id, dispatch)
+      }
     }
     
     const isRoomFavorited = currentUser?.favoriteRooms?.some((favRoom) => favRoom?._id === room?._id);

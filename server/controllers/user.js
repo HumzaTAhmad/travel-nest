@@ -117,7 +117,32 @@ export const addToFavorite = tryCatch(async(req, res)=>{
     return res.status(404).json({ success: false, error: 'User not found' });
   }
 
-  user.id = user._id.toString();
-  delete user._id, user.password, user.token;
+  updatedUser.id = updatedUser._id.toString();
+  delete updatedUser._id, updatedUser.password, updatedUser.token;
+
+  res.status(200).json({ success: true, result: updatedUser });
+})
+
+export const removeFromFavorite = tryCatch(async(req, res)=>{
+  const roomToRemove= req.body;
+  const userId = req.params.userId;
+
+  const user = await userModel.findById(userId);
+
+  // Remove the room from the favoriteRooms array
+  user.favoriteRooms = user.favoriteRooms.filter((favRoom) => favRoom._id !== roomToRemove._id);
+
+  // Save the updated user document
+  await user.save();
+
+  const updatedUser = await userModel.findById(userId).lean().exec(); // Use lean() to get plain JS object
+
+  if (!updatedUser) {
+    return res.status(404).json({ success: false, error: 'User not found' });
+  }
+
+  updatedUser.id = updatedUser._id.toString();
+  delete updatedUser._id, updatedUser.password, updatedUser.token;
+  
   res.status(200).json({ success: true, result: updatedUser });
 })
