@@ -162,7 +162,7 @@ const Room = ({room, currentUser}) => {
             </Stack>
             <Stack>
               <Typography variant="h6" component="span">
-                {'Favorite this Room: '} <Button onClick={handleClick}>{isRoomFavorited ? <Favorite /> : <FavoriteBorder />}</Button>
+                {'Favorite this Room: '} <Button onClick={handleClick}>{isRoomFavorited ? <Favorite color="error"/> : <FavoriteBorder />}</Button>
               </Typography>    
             </Stack>
           </Stack>

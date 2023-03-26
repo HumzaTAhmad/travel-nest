@@ -2,7 +2,12 @@ import KNN from 'ml-knn'
 import roomModel from '../../models/Room.js';
 import userModel from '../../models/User.js';
 
-const getRoomFeatures = (room) => [room.lng, room.lat, room.price];
+const getRoomFeatures = (room) => [
+  room.roomType === 'private' ? 0 : 1,
+  room.bathroomType === 'private' ? 0 : 1,
+  room.occupancy,
+  room.LengthOfStay,
+];
  
 export const recommendRoom = async(userId, k=3) =>{
     const user = await userModel.findById(userId)
@@ -11,7 +16,16 @@ export const recommendRoom = async(userId, k=3) =>{
         return null
     }
 
-    const allRooms = await roomModel.find()
+    const favoriteRoomIds = user.favoriteRooms.map((favRoom) => favRoom._id);
+
+    const allRooms = await roomModel
+    .find({
+        _id: {
+        $nin: favoriteRoomIds,
+        },
+    })
+    .exec();
+
     const roomsData = allRooms.map(getRoomFeatures)
     const favoriteRoomsData = user.favoriteRooms.map(getRoomFeatures)
 
