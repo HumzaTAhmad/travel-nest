@@ -52,7 +52,7 @@ const Room = ({room, currentUser}) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar position="relative">
+        <AppBar position="relative"  sx={{ backgroundColor: '#00539CFF', color:'#EEA47FFF'}}>
           <Toolbar>
             <Typography variant="h6" component="h3" sx={{ ml: 2, flex: 1 }}>
               {room?.title}
@@ -154,17 +154,67 @@ const Room = ({room, currentUser}) => {
                 <Typography component="span">{place?.place_name}</Typography>
               </Box>
             </Stack>
+            <Stack
+              direction="row"
+              sx={{
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Room Type: '}
+                </Typography>
+                <Typography component="span">{room?.roomType}</Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Phone Number: '}
+                </Typography>
+                <Typography component="span">
+                  {room?.phone}
+                </Typography>
+              </Box>
+            </Stack>
+            <Stack
+              direction="row"
+              sx={{
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Bathroom Type: '}
+                </Typography>
+                <Typography component="span">{room?.bathroomType}</Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Duration of Stay: '}
+                </Typography>
+                <Typography component="span">
+                  {room?.LengthOfStay} days
+                </Typography>
+              </Box>
+            </Stack>
+            <Box>
+              <Typography variant="h6" component="span">
+                {'Occupancy: '}
+              </Typography>
+              <Typography component="span">{room?.occupancy} people</Typography>
+            </Box>
             <Stack>
               <Typography variant="h6" component="span">
                 {'Details: '}
               </Typography>
               <Typography component="span">{room?.description}</Typography>
             </Stack>
-            <Stack>
+            {/*<Stack>
               <Typography variant="h6" component="span">
                 {'Favorite this Room: '} <Button onClick={handleClick}>{isRoomFavorited ? <Favorite color="error"/> : <FavoriteBorder />}</Button>
-              </Typography>    
-            </Stack>
+            </Typography> 
+            </Stack>*/}
           </Stack>
         </Container>
       </Dialog>

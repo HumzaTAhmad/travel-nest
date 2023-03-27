@@ -20,7 +20,7 @@ export default function BottomNav({mapRef, containerRef}) {
             1:<Rooms />,
             2:(
                 <Protected>
-                    <AddRoom setPage={setValue}/> //passing setValue to add room so when room is created it will take us back
+                    <AddRoom setPage={setValue}/> {/*passing setValue to add room so when room is created it will take us back*/}
                 </Protected>
             ), 
         }[value]}
