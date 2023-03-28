@@ -5,6 +5,7 @@ import tryCatch from './utils/tryCatch.js'
 export const createRoom = tryCatch(async (req, res) => {
     const {id:uid, name:uName, photoURL:uPhoto} = req.user
     const newRoom = new roomModel({...req.body, uid, uName, uPhoto})
+    console.log("HHHHH" + newRoom)
     await newRoom.save()
     res.status(201).json({success:true, result:newRoom})
 })

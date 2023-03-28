@@ -1,6 +1,14 @@
 import {ChevronLeft,Dashboard,Inbox,KingBed,Logout,Mail,MarkChatUnread, NotificationsActive,PeopleAlt,} from '@mui/icons-material';
 import {Avatar,Box,Divider,IconButton,List,ListItem,ListItemButton,ListItemIcon,ListItemText,styled,Tooltip,Typography,} from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
+import { useMemo, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Main from './main/Main';
+import Messages from './messages/Messages';
+import Requests from './requests/Requests';
+import Rooms from './rooms/Rooms';
+import Users from './users/Users';
 
 const drawerWidth = 240;
 
@@ -53,13 +61,29 @@ const openedMixin = (theme) => ({
   );
 
 
-export default function SideList({open, setOpen}) {
+function SideList({open, setOpen, currentUser}) {
 
-  
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const [selectedLink, setSelectedLink] = useState('')
+
+  const list = useMemo(()=>[
+    {title:'Main', icon:<Dashboard/>, link:'', component:<Main setSelectedLink={setSelectedLink} link={''}/>},
+    {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users setSelectedLink={setSelectedLink} link={'users'}/>},
+    {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms setSelectedLink={setSelectedLink} link={'rooms'}/>},
+    {title:'Requests', icon:<NotificationsActive/>, link:'requests', component:<Requests setSelectedLink={setSelectedLink} link={'requests'}/>},
+    {title:'Messages', icon:<MarkChatUnread/>, link:'messages', component:<Messages setSelectedLink={setSelectedLink} link={'messages'}/>},
+  ], [])
+
+  const handleLogout = () => {
+    dispatch({type:'UPDATE_USER', payload:null})
+    navigate('/')
+  }
 
   return (
     <>
-          <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={()=>setOpen(false)}>
             <ChevronLeft />
@@ -67,14 +91,16 @@ export default function SideList({open, setOpen}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {list.map((item) => (
+            <ListItem key={item.title} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate(item.link)}
+                selected={selectedLink === item.link}
               >
                 <ListItemIcon
                   sx={{
@@ -83,69 +109,49 @@ export default function SideList({open, setOpen}) {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={item.title} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Box sx={{ mx: 'auto', mt: 3, mb: 1 }}>
+          <Tooltip title={currentUser?.name || ''}>
+            <Avatar
+              src={currentUser?.photoURL}
+              {...(open && { sx: { width: 100, height: 100 } })}
+            />
+          </Tooltip>
+        </Box>
+        <Box sx={{ textAlign: 'center' }}>
+          {open && <Typography>{currentUser?.name}</Typography>}
+          <Typography variant="body2">{currentUser?.role || 'role'}</Typography>
+          {open && (
+            <Typography variant="body2">{currentUser?.email}</Typography>
+          )}
+          <Tooltip title="Logout" sx={{ mt: 1 }}>
+            <IconButton onClick={handleLogout}>
+              <Logout />
+            </IconButton>
+          </Tooltip>
+        </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Routes>
+          {list.map((item) => (
+            <Route key={item.title} path={item.link} element={item.component} />
+          ))}
+        </Routes>
       </Box>
     </>
   )
 }
+
+const mapStateToProps = state => ({
+  currentUser: state.currentUser,
+});
+
+export default connect(mapStateToProps)(SideList);

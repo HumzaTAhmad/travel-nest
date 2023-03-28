@@ -1,5 +1,5 @@
-import { Close, Star, StarBorder } from '@mui/icons-material'
-import { AppBar, Avatar, Dialog, IconButton, Rating, Slide, Toolbar, Tooltip, Typography } from '@mui/material'
+import { Close, Favorite, FavoriteBorder, StarBorder, ThumbsUpDown } from '@mui/icons-material'
+import { AppBar, Avatar, Button, Dialog, IconButton, Rating, Slide, Toolbar, Tooltip, Typography } from '@mui/material'
 import { useDispatch, connect } from 'react-redux';
 import React, { forwardRef, useEffect, useState } from 'react'
 import { Box, Container, Stack } from '@mui/system';
@@ -10,12 +10,14 @@ import 'swiper/css/navigation'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/zoom'
 import './swiper.css'
+import { addToFavorite, getUser, removeFromFavorite } from '../../actions/user';
 
 const Transition = forwardRef((props, ref)=>{
     return <Slide direction='up' {...props} ref={ref} />
 })
 
-const Room = ({room}) => {
+const Room = ({room, currentUser}) => {
+    console.log(currentUser)
     const dispatch = useDispatch()
     const [place, setPlace] = useState(null);
   
@@ -31,6 +33,18 @@ const Room = ({room}) => {
     const handleClose = () => {
       dispatch({ type: 'UPDATE_ROOM', payload: null });
     };
+
+    const handleClick = () =>{
+      if(isRoomFavorited){
+        removeFromFavorite(room, currentUser.id, dispatch)
+      }else{
+        addToFavorite(room, currentUser.id, dispatch)
+      }
+    }
+    
+    const isRoomFavorited = currentUser?.favoriteRooms?.some((favRoom) => favRoom?._id === room?._id);
+    console.log(isRoomFavorited)
+
     return (
       <Dialog
         fullScreen
@@ -38,7 +52,7 @@ const Room = ({room}) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar position="relative">
+        <AppBar position="relative"  sx={{ backgroundColor: '#00539CFF', color:'#EEA47FFF'}}>
           <Toolbar>
             <Typography variant="h6" component="h3" sx={{ ml: 2, flex: 1 }}>
               {room?.title}
@@ -74,6 +88,7 @@ const Room = ({room}) => {
                 </div>
               </SwiperSlide>
             ))}
+            
             <Tooltip
               title={room?.uName || ''}
               sx={{
@@ -139,12 +154,67 @@ const Room = ({room}) => {
                 <Typography component="span">{place?.place_name}</Typography>
               </Box>
             </Stack>
+            <Stack
+              direction="row"
+              sx={{
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Room Type: '}
+                </Typography>
+                <Typography component="span">{room?.roomType}</Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Phone Number: '}
+                </Typography>
+                <Typography component="span">
+                  {room?.phone}
+                </Typography>
+              </Box>
+            </Stack>
+            <Stack
+              direction="row"
+              sx={{
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Bathroom Type: '}
+                </Typography>
+                <Typography component="span">{room?.bathroomType}</Typography>
+              </Box>
+              <Box>
+                <Typography variant="h6" component="span">
+                  {'Duration of Stay: '}
+                </Typography>
+                <Typography component="span">
+                  {room?.LengthOfStay} days
+                </Typography>
+              </Box>
+            </Stack>
+            <Box>
+              <Typography variant="h6" component="span">
+                {'Occupancy: '}
+              </Typography>
+              <Typography component="span">{room?.occupancy} people</Typography>
+            </Box>
             <Stack>
               <Typography variant="h6" component="span">
                 {'Details: '}
               </Typography>
               <Typography component="span">{room?.description}</Typography>
             </Stack>
+            {/*<Stack>
+              <Typography variant="h6" component="span">
+                {'Favorite this Room: '} <Button onClick={handleClick}>{isRoomFavorited ? <Favorite color="error"/> : <FavoriteBorder />}</Button>
+            </Typography> 
+            </Stack>*/}
           </Stack>
         </Container>
       </Dialog>
@@ -154,7 +224,8 @@ const Room = ({room}) => {
 function mapStateToProps(state) {
     console.log(state)
     return {
-      room: state.room
+      room: state.room,
+      currentUser: state.currentUser
     };
   }
   

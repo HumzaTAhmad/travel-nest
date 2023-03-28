@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {Avatar, Badge, Box, IconButton, Tooltip} from '@mui/material';
-import { Mail, Notifications } from '@mui/icons-material';
+import { Mail, Message, Notifications } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import useCheckToken from '../../hooks/useCheckToken';
 
@@ -14,7 +14,7 @@ function UserIcons(props) {
         <Box>
             <IconButton size='large' color='inherit'>
                 <Badge color='error' badgeContent={5}>
-                    <Mail/>
+                    <Message/>
                 </Badge>
             </IconButton>
             <IconButton size='large' color='inherit'>

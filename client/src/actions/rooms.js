@@ -1,3 +1,4 @@
+import { addToFavorite } from "./user"
 import fetchData from "./utils/fetchData"
 
 
@@ -22,6 +23,6 @@ export const createRoom = async (room, currentUser, dispatch, setPage) => {
 export const getRooms = async(dispatch) => {
     const result = await fetchData({url, method:'GET'}, dispatch)
     if(result){
-        dispatch({type:'UPDATE_ROOMS', payload:result})
+        dispatch({type:'UPDATE_ALL_ROOMS', payload:result})
     }
 }

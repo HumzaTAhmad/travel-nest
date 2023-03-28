@@ -63,3 +63,67 @@ export const updateProfile = async(currentUser, updatedFields, dispatch)=>{
 
   dispatch({type:'END_LOADING'})
 }
+
+export const getUsers = async(dispatch) => {
+  const result = await fetchData({url, method:'GET'}, dispatch)
+  console.log(result)
+  if(result){
+      dispatch({type:'UPDATE_ALL_USERS', payload:result})
+  }
+}
+
+export const getUser = async (userId, dispatch)=>{
+  console.log(userId)
+  const result = await fetchData({
+    url:`${url}/${userId}`,
+    method:'GET',
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
+}
+
+
+export const updateStatus = (updatedFields, userId, dispatch)=>{
+  return fetchData({
+    url:`${url}/updateStatus/${userId}`,
+    method:'PATCH',
+    body:updatedFields,
+  },
+  dispatch
+  )
+}
+
+//this function will add the selected room into the specific user favorites array
+export const addToFavorite = async (room, userId, dispatch)=>{
+  console.log(userId)
+  const result =  await fetchData({
+    url:`${url}/addToFavorite/${userId}`,
+    method:'PATCH',
+    body:room,
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
+}
+
+export const removeFromFavorite = async (room, userId, dispatch)=>{
+  console.log(userId)
+  const result =  await fetchData({
+    url:`${url}/removeFromFavorite/${userId}`,
+    method:'PATCH',
+    body:room,
+  },
+  dispatch
+  )
+  console.log(result)
+  if(result){
+    dispatch({type:'UPDATE_USER', payload:result})
+  }
+}

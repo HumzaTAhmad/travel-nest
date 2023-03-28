@@ -87,6 +87,11 @@ function AddRoom(props) {
             price:details.price,
             title:details.title,
             description:details.description,
+            occupancy:details.occupancy,
+            LengthOfStay:details.LengthOfStay,
+            roomType:details.roomType,
+            bathroomType:details.bathroomType,
+            phone:details.phone,
             images
         }
         createRoom(room, currentUser, dispatch, setPage)

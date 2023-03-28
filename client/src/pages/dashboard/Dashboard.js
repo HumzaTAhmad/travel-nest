@@ -6,8 +6,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import SideList from './SideList';
+import { ThemeProvider } from '@mui/system';
+import { createTheme, Tooltip } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Brightness4, Brightness7, Home } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -33,13 +37,22 @@ const AppBar = styled(MuiAppBar, {
 
 export default function Dashboard() {
   const [open, setOpen] = useState(false);
+  const [dark, setDark] =  useState(true)
+
+  const darkTheme = useMemo(()=>createTheme({
+    palette:{
+        mode: dark ? 'dark' : 'light'
+    }
+  }), [dark])
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
+  const navigate = useNavigate()
 
   return (
+    <ThemeProvider theme={darkTheme}>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -56,12 +69,21 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+          <Tooltip title="Go back to home page">
+            <IconButton sx={{mr:1}} onClick={()=>navigate('/')}>
+            <Home />
+            </IconButton>
+          </Tooltip>
+          <Typography variant="h6" noWrap component="div" sx={{flexGrow:1}}>
+            Dashboard
           </Typography>
+          <IconButton onClick={()=>setDark(!dark)}>
+            {dark ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <SideList open={open} setOpen={setOpen} />
     </Box>
+    </ThemeProvider>
   );
 }

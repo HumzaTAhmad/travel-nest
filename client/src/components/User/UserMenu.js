@@ -1,11 +1,14 @@
-import { Logout, Settings } from '@mui/icons-material';
+import { Dashboard, Logout, Settings } from '@mui/icons-material';
 import { ListItemIcon, Menu, MenuItem } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
 import Profile from './Profile';
 
 function UserMenu({anchorUserMenu, setAnchorUserMenu, currentUser}) {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     function handleCloseUserMenu(){
         setAnchorUserMenu(null)
     }
@@ -15,7 +18,7 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, currentUser}) {
         dispatch({type:'UPDATE_USER', payload:null})
     }
 
-
+ 
     return (
         <>
             <Menu
@@ -32,12 +35,19 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, currentUser}) {
                     Profile
                     </MenuItem>
                 )}
+                {/*<MenuItem onClick={() => navigate('dashboard')}>
+                    <ListItemIcon>
+                        <Dashboard fontSize="small" />
+                    </ListItemIcon>
+                    Dashboard
+                </MenuItem>*/}
                 <MenuItem onClick={logout}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout
                 </MenuItem>
+                
             </Menu>
             <Profile />
         </>

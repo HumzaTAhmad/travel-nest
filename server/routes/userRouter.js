@@ -1,11 +1,16 @@
 import {Router} from 'express'
-import { createUser, getUser, updateProfile } from '../controllers/user.js'
+import { addToFavorite, createUser, getRecommendedRooms, getUser, getUsers, login, removeFromFavorite, updateProfile, updateStatus } from '../controllers/user.js'
 import auth from '../middlware/auth.js'
 
 const userRouter = Router()
 userRouter.post('/register', createUser)
-userRouter.post('/login', getUser)
+userRouter.post('/login', login)
 userRouter.patch('/updateProfile', auth, updateProfile)
-
+userRouter.get('/', getUsers)
+userRouter.get('/:userId', getUser)
+userRouter.patch('/updateStatus/:userId', updateStatus)
+userRouter.patch('/addToFavorite/:userId', addToFavorite)
+userRouter.patch('/removeFromFavorite/:userId', removeFromFavorite)
+userRouter.get('/recommendations/:userId', getRecommendedRooms);
 
 export default userRouter
