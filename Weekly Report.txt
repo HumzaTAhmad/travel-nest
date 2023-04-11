@@ -32,8 +32,8 @@ Describe the problem/issue, who is working on it, what the cause is, what has be
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
 
-1)  Implement light/dark mode button inside user dashboard
-2) Create pop up slider for images on room listing
+1) Implement light/dark mode button inside user dashboard
+2) Add automatic function to pop up slider for images on room listing
 3) Implement Role-based access for user permissions
 4) Implement review section under each room listing card
 5) Implement rating system under each room listing card
@@ -46,10 +46,10 @@ Total Weekly Team effort: 18 hours 15min
 
 WEEK 7 (Mar 27 - Apr 2) 
 
-Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations aremm required. In parenthesis, provide the number of hours the team member worked on the specific task.
 
 A. Weekly Accomplishments
-
+1) Complete the KNN Algorith with the information we have gathered. Done by Humza 
 
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
@@ -62,13 +62,14 @@ What do you plan to work on next week? Complete sentences, paragraphs, and expla
 1) Implemented a button for users to create a room listing.
 2) Implemented a user dashboard 
 3) Developed a real-time check and typing feature in React. 
-4) Implemented search and filtering settings on the search bar.
+4) Implemented search and filtering settings on the search bar. (to fix)
 5) Added a statistics section inside the user dashboard.
 6) Created a recommendation engine using the K-NN algorithm.
 
 D. Time log
 Total Number of Hours worked on the project this week per team member. 
-Ahmad: 9 hours 30min, Oboa: 8 hours 45min 
+Ahmad: , 
+Oboa: 8 hours 45min 
 Total Weekly Team effort: 18 hours 15min
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
@@ -76,27 +77,36 @@ Total Weekly Team effort: 18 hours 15min
 WEEK 6 (Mar 20 - Mar 26) 
 
 A. Weekly Accomplishments
-1)
-2)
-3)
-4)
+1) Implementing the favorite button. This was implemented by Humza and this was added in order to make this application more appealing to customr but to also add more variable or reference points for KNN Algorithm too work better. (30min)
+
+2) More Research on K-NN algorithm. Done by Humza and Chriss (7h)
+
+3) Refactor authentication middleware in backend. Done by Humza (30min)
+
+4) Create feature to group room cluster to reduce mess, Dony by Chriss, this feature allows the map to be more organized by group few room that are in close location into one single bubble to avoid mess. (3h)
+
+5) Create pop up slider for images on room listing. Done by Humza and Chriss (2h)
+
 
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
-1) 
+1) This week was a smooth week beside preparaing for the Midterm Presentaion that took us about 2h for the mock presntation and 2h to make and polish the slides of the presentation. However, we have postponed implementing React Real time Check and typing to week 7 and 8. Despite, we are still in good shape and still on track.
 
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
-
+1) Complete the KNN Algorith with the information we have gathered
+2) Implemented a button for users to create a room listing.
+3) Implemented a user dashboard 
+4) Developed a real-time check and typing feature in React. 
+5) Implemented search and filtering settings on the search bar. (to fix)
 
 D. Time log
 Total Number of Hours worked on the project this week per team member.
-Ahmad: 
-Chriss: 
-Total Weekly Team effort: 
+Ahmad: 6h 30min
+Chriss: 8h 30min
+Total Weekly Team effort: 15h
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                       
 WEEK 5 (Mar 13 - Mar 19) Spring Break
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
@@ -104,28 +114,38 @@ WEEK 5 (Mar 13 - Mar 19) Spring Break
 WEEK 4 (Mar 6 - Mar 12)
 
 A. Weekly Accomplishments
-1) Implement Geolocator controller button to find the user specific location when creating room
-2) Create search bar on mapbox that will allow user to search up specific address and locate to that specific location
-3) Implement Geolocator controller button to find the user specific location when creating room
-4) Create action creator in front end called createRoom that will send a http post request to backend and store room in database
-5) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database
-6) Implement React Real time Check and typing
-7) Implement section to view all rooms as list
-8) Research K-NN algorithm and implement implement with mock data
+1) Implement Geolocator controller button to find the user specific location when creating room. Done by Humza and this means that when a user creates a room, they can click on the geolocator controller button to identify their current location, which can then be used to specify the location of the room. (2h)
+
+2) Implement Geolocator controller button to find the user specific location when creating room. Done by Chriss, this means that when a user is creating a room, they will have the option to click on the Geolocator controller button to automatically determine their current location (3h)
+
+3) Create action creator in front end called createRoom that will send a http post request to backend and store room in database. Done by Chriss and Humza (30min)
+
+4) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database. Done by Humza (30min)
+
+5) Implement section to view all rooms as list. Done by Chriss, where users we will be able to see all roomd added by all users. (3h)
+
+6)Implement drag and drop image functionality. Done by Humza, and this allow users to be able to drag and drop images from their local files or other sources into a designated area of the application. The application will then be able to process and display the image in the appropriate context, such as adding it to a post or profile picture. (4h)
+
 
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
-1) 
+1) We're having issues making the KNN work due to lack of information, that will tackle hopefully the coming week after spring speak. However, we also decided to postpone implementing React Real time check and typing feature. In addition, we create the search bar on mapbox and it doesn't work properly. We are still on track due to replace unaccomplished task with alternative to avoid procrastination and time wasting (For ex: the drag and drop fuctionality).
+
 
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Research K-NN algorithm and implement implement with mock data
+2) Implement React Real time Check and typing
+3) Create feature to group room cluster to reduce mess
+4) Create pop up slider for images on room listing
+5) Midterm Presentation Preparation
 
 
 D. Time log
 Total Number of Hours worked on the project this week per team member.
-Ahmad: 6h
-Chriss: 7 hours
-Total Weekly Team effort: 13hours
+Ahmad: 6h 30min
+Chriss: 6h 30min 
+Total Weekly Team effort: 13hour
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
