@@ -27,7 +27,7 @@ A. Weekly Accomplishments
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
 
-1) We had a problem with the dashboard that was going blank for some reasons. Was not a huge problem and was resolved and it did not affect project schedule
+1) We had a problem with the dashboard that was going blank for some reasons again. Was not a huge problem and was resolved and it did not affect project schedule
 
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
