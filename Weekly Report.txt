@@ -2,7 +2,148 @@
                                                                        Team Tech Titans
                                                             https://github.com/HumzaTAhmad/travel-nest
                                                         Humza Ahmad (ha10@hood.edu); Chriss Oboa(cfo2@hood.edu)
+                                                        
+                                              
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
 
+WEEK 4 (Apr 3 - Apr 10)
+
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+
+A. Weekly Accomplishments
+1) Implemented a button for users to create a room listing. Done by Chriss, this feature was developed over the course of 45min.
+
+2) Implemented a user dashboard that allows users to manage their listings and view statistics related to their account. Done by Chriss, this feature was developed over the course of 3 hours.
+
+3) Developed a real-time check and typing feature in React. Done by Humza, this allows users to see when someone else is typing in real-time. The feature was developed using React and was completed within the week. (30min)
+
+4) Implemented search and filtering settings on the search bar. Done by Chriss, this feature allows users to easily find the listings they are looking for by filtering the results based on specific place or/and price. The feature was developed over the course of the week. (5 hour)
+
+5) Added a statistics section inside the user dashboard. Done by Humza, this section displays relevant data about the user's listings and their account activity. The feature was developed over the course of the week. (5 hours)
+
+6) Created a recommendation engine using the K-NN algorithm. Done by Humza, this engine uses data about user preferences and behavior to recommend listings that the user is likely to be interested in. The feature was developed over the course of the week. (4 hours)
+
+
+Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
+   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
+   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
+   file.
+
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+
+1) We had a problem with the dashboard that was going blank for some reasons. Was not a huge problem and was resolved and it did not affect project schedule
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+1)  Implement light/dark mode button inside user dashboard
+2) Create pop up slider for images on room listing
+3) Implement Role-based access for user permissions
+4) Implement review section under each room listing card
+5) Implement rating system under each room listing card
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 9 hours 30min, Oboa: 8 hours 45min 
+Total Weekly Team effort: 18 hours 15min
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WEEK 3 (FEB 27 - MAR 5)
+A. Weekly Accomplishments
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures. This was implemented by Chriss and allows the user
+   to go through a three step process that allows them to add there room to rooms listing. The first step allows the user to select the location of there room. The next step allows the
+   user to enter the room details such as the price, title, and description of the room. The last step allows the user to add images of there room. Which then allows them to submit it. (5 hours)
+2) Implement mapbox in room creation process to show global map to user. This was implemented by Chriss and was done by creating a mapbox token and inserting it into our program environment.
+   This token was then passed into the mapbox component and used to display the geographical map to the user which allows them to move there marker to the location there room is located. (3 hours)
+3) Create REST endpoint for the retrieval and creation of rooms. This was done by Humza and was done so after the user submits there room form, their room information will be saved in
+   the mondoDB database. This was done by using mongoose to save the created user room. The getRoom controller was added so a list of rooms can be displayed for the user when that feature
+   is eventually added, this was done by using the find function in mongoose that will connect our server to the database.(5 hours)
+4) Implement post route for the creation of rooms, include authentication middleware in this call. This was done by Humza and was done so only calls to the server with the corresponding
+   route address can hit our room endpoints. Added the authentication middleware for this route so users who have been logged in for too long, or are not allowed this functionality will
+   be signed out.(30 min)
+5) Update redux state to include details object in global redux store, this will allow us to have a place to store the users room info until they submit it. This was implemented by
+   Humza and was done so the information that is entered by the user about the rooms in the creation of room steps will be saved. This will ensure when they move on to different steps
+   their previous information is saved and not wiped out.(2 hours)
+6) Create roomModel schema in mongoDB database and model folder to specify the structure of room database entries. This was done by Humza and was done so we have a seperate collection for only room
+   entries. this schema will have a structure that will only contain information about the room such as longitude, latitude, price, title, description, images, user id, user name,
+   and user photo.(1 hour)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) We are runnning into a problem with the filter feature. The logic behind filtering by price and address is getting complex since we will have to manipulate many states in our
+   redux store for this filtering feature to work as intended. We have a rough solution in mind, but we are planning on skipping this and coming back to it at the end once we have
+   our KNN reccomendation engine completed. Alot of time this week was wasted on trying to implement this, so skipping this is the best option for now.
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Implement Geolocator controller button to find the user specific location when creating room
+2) Create search bar on mapbox that will allow user to search up specific address and locate to that specific location
+3) Implement Geolocator controller button to find the user specific location when creating room
+4) Create action creator in front end called createRoom that will send a http post request to backend and store room in database
+5) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database
+6) Implement React Real time Check and typing
+7) Implement section to view all rooms as list
+8) Research K-NN algorithm and implement implement with mock data
+
+D. Time log
+Total Number of Hours worked on the project this week per team member.
+Ahmad: 15 hours
+Chriss: 15 hours
+Total Weekly Team effort: 30 hours
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+WEEK 2 (FEB 20 - FEB 26)
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+A. Weekly Accomplishments
+1) Implemented  User Authentication of users of Travel Nest that are not using Google login. This was implemented by Humza and was done by creating a hashed password for the user
+   using and storing it in the database, when the user enters the form to login it will encrpyt the inputted password and compare it with the one in the database and the user will
+   be verified. JWT token for user is also created when they login or register. *Expiration time still being worked on (3 hours)
+2) Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
+   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
+   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
+   file. (3 hours)
+3) Create get user, and create user, and update user endpoints which will be used by front end to allow users to login, register, and update there account. This was done by Humza
+   and was by creating a user controller file with these three functions. Each of the functions interact with the mongoDB database in the user collection.(6 hours)
+4) Create login, register action creators that will launch once login/registration forms are complete, and send a request to our API. This was done by Chriss and was implemented by
+   creating three functions that all send http request to the backend given the URL that matches the route in the backend. Login will call the getUser endpoint, Register will call The
+   creatUser end point.(5 hours)
+5) Create update profile action creator that will lauch once update button is clicked and send the updated user information to our API. This was done by Humza and was done by adding
+   another functin to the user action creator file. This function will the new information of the user and send a http request to the backend using the proper route URL and hit the
+   updateProfile endpoint.(3 hours)
+6) Implemented update profile route, and function in backend that will change the users information in the database based on the data received. This was done by Chriss to allow
+   the requested data to update user in the database to hit the correct endpoint function, in this case updateProfile(30 min)
+7) Refactored authentication middleware in backend to also authenticate the JWT token of active users to ensure it is not expired. This middleware function was done by Chriss/Humza
+   will run on every request to our API and will check the current user token and verify if it is an active token. If the token's length is greater than 1000, it assumes that
+   it is a Google ID token and verifies it using the verifyIdToken(). If the token's length is less than or equal to 1000, it assumes that it is a JSON Web Token (JWT) and verifies
+   it using the jwt.verify() method of the jsonwebtoken package.If the token is successfully verified, the function extracts the user information from the token and adds it to the
+   req object as a new user property. This user object contains the user's ID, name, and photo URL. The function then calls the next callback to pass control to the next middleware
+   or route handler(3 hours each, so 6 hours)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) Having trouble connecting to Mapbox, not a huge problem we were planning on also having it connected with our project sooner. Does not affect project schedule	
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures
+2) Implement mapbox in room creation process to show global map to user
+3) Create REST endpoint for the creation of rooms
+4) Implement post route for the creation of rooms, include authentication middleware in this call
+5) Update redux state to include description object in global redux store, this will allow us to have a place to store the users room info until they submit it
+6) Create roomModel schema in mongoDB database to specify the structure of room database entries
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 13 hours, Oboa: 13 hours 
+Total Weekly Team effort: 26 hours
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                       
 WEEK 1 (FEB 13- FEB 19)
 A. Weekly Accomplishments
 Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
@@ -63,140 +204,9 @@ Total Number of Hours worked on the project this week per team member.
 Ahmad: 8 hours, Oboa: 8 hours 
 Total Weekly Team effort: 16 hours
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-WEEK 2 (FEB 20 - FEB 26)
-Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
-A. Weekly Accomplishments
-1) Implemented  User Authentication of users of Travel Nest that are not using Google login. This was implemented by Humza and was done by creating a hashed password for the user
-   using and storing it in the database, when the user enters the form to login it will encrpyt the inputted password and compare it with the one in the database and the user will
-   be verified. JWT token for user is also created when they login or register. *Expiration time still being worked on (3 hours)
-2) Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
-   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
-   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
-   file. (3 hours)
-3) Create get user, and create user, and update user endpoints which will be used by front end to allow users to login, register, and update there account. This was done by Humza
-   and was by creating a user controller file with these three functions. Each of the functions interact with the mongoDB database in the user collection.(6 hours)
-4) Create login, register action creators that will launch once login/registration forms are complete, and send a request to our API. This was done by Chriss and was implemented by
-   creating three functions that all send http request to the backend given the URL that matches the route in the backend. Login will call the getUser endpoint, Register will call The
-   creatUser end point.(5 hours)
-5) Create update profile action creator that will lauch once update button is clicked and send the updated user information to our API. This was done by Humza and was done by adding
-   another functin to the user action creator file. This function will the new information of the user and send a http request to the backend using the proper route URL and hit the
-   updateProfile endpoint.(3 hours)
-6) Implemented update profile route, and function in backend that will change the users information in the database based on the data received. This was done by Chriss to allow
-   the requested data to update user in the database to hit the correct endpoint function, in this case updateProfile(30 min)
-7) Refactored authentication middleware in backend to also authenticate the JWT token of active users to ensure it is not expired. This middleware function was done by Chriss/Humza
-   will run on every request to our API and will check the current user token and verify if it is an active token. If the token's length is greater than 1000, it assumes that
-   it is a Google ID token and verifies it using the verifyIdToken(). If the token's length is less than or equal to 1000, it assumes that it is a JSON Web Token (JWT) and verifies
-   it using the jwt.verify() method of the jsonwebtoken package.If the token is successfully verified, the function extracts the user information from the token and adds it to the
-   req object as a new user property. This user object contains the user's ID, name, and photo URL. The function then calls the next callback to pass control to the next middleware
-   or route handler(3 hours each, so 6 hours)
-
-B. Problems/Issues
-Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
-1) Having trouble connecting to Mapbox, not a huge problem we were planning on also having it connected with our project sooner. Does not affect project schedule	
-
-C. Next week’s planned work
-What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
-1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures
-2) Implement mapbox in room creation process to show global map to user
-3) Create REST endpoint for the creation of rooms
-4) Implement post route for the creation of rooms, include authentication middleware in this call
-5) Update redux state to include description object in global redux store, this will allow us to have a place to store the users room info until they submit it
-6) Create roomModel schema in mongoDB database to specify the structure of room database entries
-
-D. Time log
-Total Number of Hours worked on the project this week per team member. 
-Ahmad: 13 hours, Oboa: 13 hours 
-Total Weekly Team effort: 26 hours
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-WEEK 3 (FEB 27 - MAR 5)
-A. Weekly Accomplishments
-Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
-1) Implement 3 step form to allow the creation of room, first one for location, second for the details, and third for the pictures. This was implemented by Chriss and allows the user
-   to go through a three step process that allows them to add there room to rooms listing. The first step allows the user to select the location of there room. The next step allows the
-   user to enter the room details such as the price, title, and description of the room. The last step allows the user to add images of there room. Which then allows them to submit it. (5 hours)
-2) Implement mapbox in room creation process to show global map to user. This was implemented by Chriss and was done by creating a mapbox token and inserting it into our program environment.
-   This token was then passed into the mapbox component and used to display the geographical map to the user which allows them to move there marker to the location there room is located. (3 hours)
-3) Create REST endpoint for the retrieval and creation of rooms. This was done by Humza and was done so after the user submits there room form, their room information will be saved in
-   the mondoDB database. This was done by using mongoose to save the created user room. The getRoom controller was added so a list of rooms can be displayed for the user when that feature
-   is eventually added, this was done by using the find function in mongoose that will connect our server to the database.(5 hours)
-4) Implement post route for the creation of rooms, include authentication middleware in this call. This was done by Humza and was done so only calls to the server with the corresponding
-   route address can hit our room endpoints. Added the authentication middleware for this route so users who have been logged in for too long, or are not allowed this functionality will
-   be signed out.(30 min)
-5) Update redux state to include details object in global redux store, this will allow us to have a place to store the users room info until they submit it. This was implemented by
-   Humza and was done so the information that is entered by the user about the rooms in the creation of room steps will be saved. This will ensure when they move on to different steps
-   their previous information is saved and not wiped out.(2 hours)
-6) Create roomModel schema in mongoDB database and model folder to specify the structure of room database entries. This was done by Humza and was done so we have a seperate collection for only room
-   entries. this schema will have a structure that will only contain information about the room such as longitude, latitude, price, title, description, images, user id, user name,
-   and user photo.(1 hour)
-
-B. Problems/Issues
-Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
-1) We are runnning into a problem with the filter feature. The logic behind filtering by price and address is getting complex since we will have to manipulate many states in our
-   redux store for this filtering feature to work as intended. We have a rough solution in mind, but we are planning on skipping this and coming back to it at the end once we have
-   our KNN reccomendation engine completed. Alot of time this week was wasted on trying to implement this, so skipping this is the best option for now.
-
-C. Next week’s planned work
-What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
-1) Implement Geolocator controller button to find the user specific location when creating room
-2) Create search bar on mapbox that will allow user to search up specific address and locate to that specific location
-3) Implement Geolocator controller button to find the user specific location when creating room
-4) Create action creator in front end called createRoom that will send a http post request to backend and store room in database
-5) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database
-6) Implement React Real time Check and typing
-7) Implement section to view all rooms as list
-8) Research K-NN algorithm and implement implement with mock data
-
-D. Time log
-Total Number of Hours worked on the project this week per team member.
-Ahmad: 15 hours
-Chriss: 15 hours
-Total Weekly Team effort: 30 hours
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-WEEK 4 (Apr 3 - Apr 10)
-
-Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
-
-A. Weekly Accomplishments
-1) Implemented a button for users to create a room listing. Done by Chriss, this feature was developed over the course of 45min.
-
-2) Implemented a user dashboard that allows users to manage their listings and view statistics related to their account. Done by Chriss, this feature was developed over the course of 3 hours.
-
-3) Developed a real-time check and typing feature in React. Done by Humza, this allows users to see when someone else is typing in real-time. The feature was developed using React and was completed within the week. (30min)
-
-4) Implemented search and filtering settings on the search bar. Done by Chriss, this feature allows users to easily find the listings they are looking for by filtering the results based on specific place or/and price. The feature was developed over the course of the week. (5 hour)
-
-5) Added a statistics section inside the user dashboard. Done by Humza, this section displays relevant data about the user's listings and their account activity. The feature was developed over the course of the week. (5 hours)
-
-6) Created a recommendation engine using the K-NN algorithm. Done by Humza, this engine uses data about user preferences and behavior to recommend listings that the user is likely to be interested in. The feature was developed over the course of the week. (4 hours)
 
 
-Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
-   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
-   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
-   file.
 
 
-B. Problems/Issues
-Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
 
-1) We had a problem with the dashboard that was going blank for some reasons. Was not a huge problem and was resolved and it did not affect project schedule
 
-C. Next week’s planned work
-What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
-
-1)  Implement light/dark mode button inside user dashboard
-2) Create pop up slider for images on room listing
-3) Implement Role-based access for user permissions
-4) Implement review section under each room listing card
-5) Implement rating system under each room listing card
-
-D. Time log
-Total Number of Hours worked on the project this week per team member. 
-Ahmad: 9 hours 30min, Oboa: 8 hours 45min 
-Total Weekly Team effort: 18 hours 15min
