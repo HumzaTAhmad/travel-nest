@@ -24,12 +24,6 @@ A. Weekly Accomplishments
 6) Created a recommendation engine using the K-NN algorithm. Done by Humza, this engine uses data about user preferences and behavior to recommend listings that the user is likely to be interested in. The feature was developed over the course of the week. (4 hours)
 
 
-Implement firebox which will be used as an image storing location that will generate an image user URL which we will store in our database. This was done by Chriss and was
-   done by creating an account on firebox and copying the config file given to allow connection. We then created a function uploadFileProgress that would take the the file
-   and its name and store it into our storage in firebase. This function would return a link that would give us the ability to store it into the database without storing the physical
-   file.
-
-
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
 
@@ -52,10 +46,54 @@ Total Weekly Team effort: 18 hours 15min
 
 WEEK 7 (Mar 27 - Apr 2) 
 
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+
+A. Weekly Accomplishments
+
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+
+1) We had a problem with the dashboard that was going blank for some reasons. Was not a huge problem and was resolved and it did not affect project schedule
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+1) Implemented a button for users to create a room listing.
+2) Implemented a user dashboard 
+3) Developed a real-time check and typing feature in React. 
+4) Implemented search and filtering settings on the search bar.
+5) Added a statistics section inside the user dashboard.
+6) Created a recommendation engine using the K-NN algorithm.
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 9 hours 30min, Oboa: 8 hours 45min 
+Total Weekly Team effort: 18 hours 15min
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
 
 WEEK 6 (Mar 20 - Mar 26) 
 
+A. Weekly Accomplishments
+1)
+2)
+3)
+4)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) 
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+
+D. Time log
+Total Number of Hours worked on the project this week per team member.
+Ahmad: 
+Chriss: 
+Total Weekly Team effort: 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
 
@@ -64,6 +102,30 @@ WEEK 5 (Mar 13 - Mar 19) Spring Break
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
 
 WEEK 4 (Mar 6 - Mar 12)
+
+A. Weekly Accomplishments
+1) Implement Geolocator controller button to find the user specific location when creating room
+2) Create search bar on mapbox that will allow user to search up specific address and locate to that specific location
+3) Implement Geolocator controller button to find the user specific location when creating room
+4) Create action creator in front end called createRoom that will send a http post request to backend and store room in database
+5) Create action creator in front end called getRoom that will send a http get request to backedn and retrieve all rooms in database
+6) Implement React Real time Check and typing
+7) Implement section to view all rooms as list
+8) Research K-NN algorithm and implement implement with mock data
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+1) 
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+
+D. Time log
+Total Number of Hours worked on the project this week per team member.
+Ahmad: 6h
+Chriss: 7 hours
+Total Weekly Team effort: 13hours
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
