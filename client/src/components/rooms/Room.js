@@ -229,6 +229,6 @@ function mapStateToProps(state) {
     };
   }
   
-  export default connect(mapStateToProps)(Room);
+export default connect(mapStateToProps)(Room);
   
   

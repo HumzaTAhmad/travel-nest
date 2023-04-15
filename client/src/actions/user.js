@@ -127,3 +127,11 @@ export const removeFromFavorite = async (room, userId, dispatch)=>{
     dispatch({type:'UPDATE_USER', payload:result})
   }
 }
+
+export const roomRecommendation = async(dispatch, userId, setPage) => {
+  const result = await fetchData({url:`${url}/recommendations/${userId}`, method:'GET'}, dispatch)
+  if(result){
+    dispatch({type:'UPDATE_ROOM', payload:result})
+    setPage(0)
+  }
+}
