@@ -35,12 +35,12 @@ function UserMenu({anchorUserMenu, setAnchorUserMenu, currentUser}) {
                     Profile
                     </MenuItem>
                 )}
-                {/*<MenuItem onClick={() => navigate('dashboard')}>
+                <MenuItem onClick={() => navigate('dashboard')}>
                     <ListItemIcon>
                         <Dashboard fontSize="small" />
                     </ListItemIcon>
                     Dashboard
-                </MenuItem>*/}
+                </MenuItem>
                 <MenuItem onClick={logout}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

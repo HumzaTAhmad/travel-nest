@@ -9,6 +9,14 @@ const getRoomFeatures = (room) => [
   room.LengthOfStay,
 ];
  
+const averageFeatures = (featureArrays) => {
+    const sumFeatures = featureArrays.reduce(
+        (acc, features) => features.map((value, index) => acc[index] + value),
+        new Array(featureArrays[0].length).fill(0)
+    );
+    return sumFeatures.map((value) => value / featureArrays.length);
+};
+
 export const recommendRoom = async(userId, k=3) =>{
     const user = await userModel.findById(userId)
 
@@ -31,6 +39,12 @@ export const recommendRoom = async(userId, k=3) =>{
 
     const knn = new KNN(roomsData, allRooms.map((_, index) => index), {k}) //train KNN algorithm
 
+    const averageFavoriteRoom = averageFeatures(favoriteRoomsData);
+    const index = knn.predict(averageFavoriteRoom);
+
+    return allRooms[index];
+    
+    /*
     const recommendations = [];
 
     for(const favoriteRoom of favoriteRoomsData){
@@ -43,4 +57,5 @@ export const recommendRoom = async(userId, k=3) =>{
         }
     }
     return recommendations
+    */
 }
