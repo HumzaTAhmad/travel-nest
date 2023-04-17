@@ -17,10 +17,8 @@ A. Weekly Accomplishments
 B. Problems/Issues
 Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
 
-We had an issue in fetching user.length to the dashboard in order to fetch and count all users so the dashboard could allow to see all users of the application through the dashoard. This step made the dashboard unresponsive. However, Humza had this process fixed. 
-We have postponed "Implement rating system under each room listing card" and "Implement review section under each room listing card", in which we will get back to it this week.
-
-1) We had a problem with the dashboard that was going blank for some reasons again. Was not a huge problem and was resolved and it did not affect project schedule
+1) We had an issue in fetching user.length to the dashboard in order to fetch and count all users so the dashboard could allow to see all users of the application through the dashoard. This step made the dashboard unresponsive. However, Humza had this process fixed. 
+2) We have postponed "Implement rating system under each room listing card" and "Implement review section under each room listing card", in which we will get back to it this week.
 
 C. Next week’s planned work
 What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
