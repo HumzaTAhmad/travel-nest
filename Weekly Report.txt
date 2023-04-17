@@ -11,7 +11,7 @@ A. Weekly Accomplishments
 
 1) Implement light/dark mode button inside user dashboard. Done by Humza, this process allows the users to be able to use the light or dark depending on users needs. (4h)
 2) Add automatic function to pop up slider for images on room listing. Done by Chriss, this allows the room listed images to move automaticaly without need to slide right or left. (3h)
-3) Implement Role-based access for user permissions. Done by Humza, it allows the user to have some role-based access to certain functionalities or data within the system, based on their designated role. This helps to ensure that users only have access to the information or tools that they require to perform their job function, while also maintaining the security and integrity of the overall system. (7h)
+3) Implement Role-based access for user permissions. Done by Humza, it allows the user to have some role-based access to certain functionalities or data within the system, based on their designated role. This helps to ensure that users only have access to the information or tools that they require to perform their job function, while also maintaining the security and integrity of the overall system.(7h)
 4) Implement contact host button to chat with owner. Don by Chriss, this allows users of a platform or service to initiate a conversation with the owner or host of a particular listing or item. his feature is commonly used in marketplaces, rental platforms, and other online services that connect buyers and sellers, renters and hosts, or service providers and clients. (6h)
 
 B. Problems/Issues
