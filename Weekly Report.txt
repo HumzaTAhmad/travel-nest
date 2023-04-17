@@ -3,7 +3,40 @@
                                                             https://github.com/HumzaTAhmad/travel-nest
                                                         Humza Ahmad (ha10@hood.edu); Chriss Oboa(cfo2@hood.edu)
                                                         
-             
+WEEK 8 (Apr 10 - Apr 17)
+
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+
+A. Weekly Accomplishments
+
+1) Implement light/dark mode button inside user dashboard. Done by Humza, this process allows the users to be able to use the light or dark depending on users needs. (4h)
+2) Add automatic function to pop up slider for images on room listing. Done by Chriss, this allows the room listed images to move automaticaly without need to slide right or left. (3h)
+3) Implement Role-based access for user permissions. Done by Humza, it allows the user to have some role-based access to certain functionalities or data within the system, based on their designated role. This helps to ensure that users only have access to the information or tools that they require to perform their job function, while also maintaining the security and integrity of the overall system. (7h)
+4) Implement contact host button to chat with owner. Don by Chriss, this allows users of a platform or service to initiate a conversation with the owner or host of a particular listing or item. his feature is commonly used in marketplaces, rental platforms, and other online services that connect buyers and sellers, renters and hosts, or service providers and clients. (6h)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+
+We had an issue in fetching user.length to the dashboard in order to fetch and count all users so the dashboard could allow to see all users of the application through the dashoard. This step made the dashboard unresponsive. However, Humza had this process fixed. 
+We have postponed "Implement rating system under each room listing card" and "Implement review section under each room listing card", in which we will get back to it this week.
+
+1) We had a problem with the dashboard that was going blank for some reasons again. Was not a huge problem and was resolved and it did not affect project schedule
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+1) Create Reccomendation section to display to user
+3) Implement user creative setting to add personality to profile
+4) Implement review section under each room listing card
+5) Implement rating system under each room listing card
+6) Improve KNN
+7) Start Polishing and add final ideas to the application 
+
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 11 hours, Oboa: 9 hours 
+Total Weekly Team effort: 20 hours
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
 
 WEEK 8 (Apr 3 - Apr 9)
