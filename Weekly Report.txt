@@ -2,6 +2,38 @@
                                                                        Team Tech Titans
                                                             https://github.com/HumzaTAhmad/travel-nest
                                                         Humza Ahmad (ha10@hood.edu); Chriss Oboa(cfo2@hood.edu)
+WEEK 9 (Apr 18 - Apr 24)
+
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+
+A. Weekly Accomplishments
+
+1) Create Reccomendation section to display to user. Done by Humza, it allows the user to discover personalized recommendations based on their preferences and browsing history. The recommendations are generated using a sophisticated algorithm that takes into account the user's interests, past interactions, and behavior on the platform. (2h)
+2) Implement review section under each room listing card. Still the process, Chriss is still actively working on this step as we have more idea to improve the system. For this step, the frontend was done. (3h)
+3) Implement rating system under each room listing card. Still the process, Chriss is still actively working on this step as we have more idea to improve the system. For this step, the frontend was done. (3h)
+4) Improve KNN. Still the process, Humza is still actively working on this step as we have more idea to improve the system. (5h)
+5) Start Polishing and add final ideas to the application. Still the process, Humza and Chriss are still actively working on this step.
+Chriss(2h) Humza(2h)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+
+No issues was faced this week. All the steps needed to be completed last week are still in the process. In addition, we pushed step " Implement user creative setting to add personality to profile" to this week.
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+
+1) Implement user creative setting to add personality to profile
+2) Implement review section under each room listing card (backend)
+3) Implement rating system under each room listing card (backend)
+4) Improve KNN
+5) Start Polishing and add final ideas to the application 
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 9 hours, Oboa: 8 hours 
+Total Weekly Team effort: 17 hours
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
                                                         
 WEEK 8 (Apr 10 - Apr 17)
 
