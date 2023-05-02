@@ -2,6 +2,35 @@
                                                                        Team Tech Titans
                                                             https://github.com/HumzaTAhmad/travel-nest
                                                         Humza Ahmad (ha10@hood.edu); Chriss Oboa(cfo2@hood.edu)
+WEEK 10 (Apr 25 - May 1)
+
+Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
+
+A. Weekly Accomplishments
+1) Implement review section under each room listing card (backend). Still in process (Chriss) (4h)
+2) Implement rating system under each room listing card (backend). Still in process by Chriss (4h)
+3) Improve KNN. Final touch done by Humza. WE have the KNN working properly and we have a page where user can see suggested rooms provided by the algorithm. (7h)
+4) Start Polishing and add final ideas to the application. Still in process (by Humza and Chriss) (2h)
+
+B. Problems/Issues
+Describe the problem/issue, who is working on it, what the cause is, what has been tried to solve it, expected resolution. Complete sentences, paragraphs, and explanations are required.  Explain how it may affect the project schedule.
+
+No issues was faced this week. All the steps needed to be completed last week are still in the process. In addition, we pushed step "Implement user creative setting to add personality to profile" to this week. Also, we wil continue working on "Implement review section under each room listing card (backend?
+
+C. Next week’s planned work
+What do you plan to work on next week? Complete sentences, paragraphs, and explanations are required. If you have pending issues from section B, how will they affect next week’s plan?
+1) Implement user creative setting to add personality to profile
+2) Keep Polishing and add final ideas to the application 
+3) Get ready For Presentation
+
+We should be all set before the weekend
+
+D. Time log
+Total Number of Hours worked on the project this week per team member. 
+Ahmad: 8 hours, Oboa: 9 hours 
+Total Weekly Team effort: 17 hours
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                        
+                                                        
 WEEK 9 (Apr 18 - Apr 24)
 
 Describe what task was completed and by whom. Complete sentences, paragraphs, and explanations are required. In parenthesis, provide the number of hours the team member worked on the specific task.
