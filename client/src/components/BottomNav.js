@@ -7,13 +7,15 @@ import Rooms from './rooms/Rooms'
 import AddRoom from './addRoom/AddRoom'
 import Protected from './protected/Protected'
 import Recommendation from './rooms/Recommendation'
+import { connect, useDispatch } from 'react-redux'
 
-export default function BottomNav({mapRef, containerRef}) {
-    const[value, setValue] = useState(0)
+function BottomNav({mapRef, containerRef, section}) {
+    const dispatch  = useDispatch()
+    //const[value, setValue] = useState(0)
     const ref = useRef()
     useEffect(()=>{
         ref.current.ownerDocument.body.scrollTop = 0
-    }, [value])
+    }, [section])
   return (
     <Box ref={ref}>
         {{
@@ -21,17 +23,17 @@ export default function BottomNav({mapRef, containerRef}) {
             1:<Rooms />,
             2:(
                 <Protected>
-                    <AddRoom setPage={setValue}/> {/*passing setValue to add room so when room is created it will take us back*/}
+                    <AddRoom/> {/*passing setValue to add room so when room is created it will take us back*/}
                 </Protected>
             ),
-            3:<Recommendation setPage={setValue}/>
-        }[value]}
+            //3:<Recommendation setPage={setValue}/>
+        }[section]}
         <Paper elevation={3} sx={{position:'fixed', bottom:0, left:0, right:0, zIndex:2}}>
             <BottomNavigation
             showLabels
-            value={value}
+            value={section}
             sx={{ backgroundColor: '#EEA47FFF' }}
-            onChange={(e, newValue) => setValue(newValue)}
+            onChange={(e, newValue) => dispatch({type:'UPDATE_SECTION', payload:newValue})}
             >
                 <BottomNavigationAction label='Map' icon={<Map />} sx={{ color: '#00539CFF' }}/>
                 <BottomNavigationAction label='Rooms' icon={<BedroomParent sx={{ color: '#00539CFF' }}/>} />
@@ -43,3 +45,12 @@ export default function BottomNav({mapRef, containerRef}) {
     </Box>
   )
 }
+
+function mapStateToProps(state) {
+    console.log(state)
+    return {
+      section: state.section
+    };
+}
+  
+export default connect(mapStateToProps)(BottomNav);

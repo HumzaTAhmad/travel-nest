@@ -41,7 +41,7 @@ export const recommendRoom = async(userId, k=3) =>{
 
     const averageFavoriteRoom = averageFeatures(favoriteRoomsData);
     const index = knn.predict(averageFavoriteRoom);
-
+    console.log("HIIIII" + allRooms)
     return allRooms[index];
     
     /*

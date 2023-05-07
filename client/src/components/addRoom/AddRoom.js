@@ -11,7 +11,7 @@ import { createRoom } from '../../actions/rooms'
 
 function AddRoom(props) {
     const dispatch = useDispatch();
-    const {images, details, location, currentUser, setPage} = props
+    const {images, details, location, currentUser} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -94,7 +94,7 @@ function AddRoom(props) {
             phone:details.phone,
             images
         }
-        createRoom(room, currentUser, dispatch, setPage)
+        createRoom(room, currentUser, dispatch)
     }
   return (
     <Container sx={{my:4}}>
@@ -139,7 +139,7 @@ function mapStateToProps(state){
         images: state.images,
         details: state.details,
         location: state.location,
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
     }
 }
 

@@ -7,6 +7,11 @@ import { deleteRoom } from '../../../actions/rooms'
 
 function RoomsActions({params, currentUser}) {
     const dispatch = useDispatch()
+
+    const handleEdit = () =>{
+
+    }
+    
   return (
     <Box>
         <Tooltip title='View room details'>
@@ -15,7 +20,7 @@ function RoomsActions({params, currentUser}) {
             </IconButton>
         </Tooltip>
         <Tooltip title='Edit this room'>
-            <IconButton onClick={()=>{}}>
+            <IconButton onClick={()=>handleEdit}>
                 <Edit/>
             </IconButton>
         </Tooltip>
