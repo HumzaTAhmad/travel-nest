@@ -7,8 +7,9 @@ import { connect, useDispatch } from 'react-redux'
 import moment from 'moment'
 import { grey } from '@mui/material/colors'
 import RoomsActions from './RoomsActions'
+import isAdmin from '../utils/isAdmin'
 
-function Rooms({setSelectedLink, link, rooms}) {
+function Rooms({setSelectedLink, link, rooms, currentUser}) {
 
 const dispatch = useDispatch()
 
@@ -84,7 +85,7 @@ const dispatch = useDispatch()
       </Typography>
       <DataGrid
         columns={columns}
-        rows={rooms}
+        rows={isAdmin(currentUser) ? rooms : rooms.filter((room) => room.uid === currentUser.id)}
         getRowId={(row) => row._id}
         rowsPerPageOptions={[5, 10, 20]}
         pageSize={pageSize}
@@ -107,7 +108,8 @@ const dispatch = useDispatch()
 function mapStateToProps(state) {
     console.log(state)
     return {
-      rooms: state.rooms
+      rooms: state.rooms,
+      currentUser: state.currentUser
     };
   }
   

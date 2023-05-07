@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 export default function AccessMessage() {
     const dispatch = useDispatch()
   return (
-    <Container sx={{py:5}}>
+    <Container sx={{py:10}}>
         <Alert severity='error' variant='outlined'>
             <AlertTitle>Forbidden Access</AlertTitle>
             Please Login or register to access this page

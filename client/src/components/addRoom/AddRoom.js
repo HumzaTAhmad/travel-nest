@@ -6,7 +6,8 @@ import AddImages from './addImages/AddImages'
 import AddLocation from './addLocation/AddLocation'
 import {connect, useDispatch} from 'react-redux'
 import { Cancel, Send } from '@mui/icons-material'
-import { createRoom, updateRoom } from '../../actions/rooms'
+import { clearRoom, createRoom, updateRoom } from '../../actions/rooms'
+import { useNavigate } from 'react-router-dom'
 
 
 function AddRoom(props) {
@@ -98,8 +99,15 @@ function AddRoom(props) {
         createRoom(room, currentUser, dispatch)
     }
 
+    const navigate = useNavigate()
     const handleCancel = ()=>{
-
+        if(updatedRoom){
+            navigate('/dashboard/rooms')
+            clearRoom(dispatch)
+        }else{
+            dispatch({type:'UPDATE_SECTION', payload:0})
+            clearRoom(dispatch)
+        }
     }
   return (
     <Container sx={{my:4}}>

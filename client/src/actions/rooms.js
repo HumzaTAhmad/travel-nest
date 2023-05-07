@@ -11,7 +11,7 @@ export const createRoom = async (room, currentUser, dispatch) => {
     const result = await fetchData({url, body:room, token:currentUser?.token}, dispatch)
     if(result){
         dispatch({type:'UPDATE_ALERT', payload:{open:true, severity:'success', message:'The room has been added successfully'}})
-        dispatch({type:'RESET_ROOM'})
+        clearRoom(dispatch)
         dispatch({type:'UPDATE_SECTION', payload:0})
 
         //launch room deatil in popup for user view when room is created
@@ -55,7 +55,7 @@ export const updateRoom = async (room, currentUser, dispatch, updatedRoom) => {
        
 
         //launch room deatil in popup for user view when room is created
-        dispatch({type:'RESET_ROOM'})
+        clearRoom(dispatch)
         dispatch({type:'UPDATE_SECTION', payload:0})
 
         //launch room deatil in popup for user view when room is created
@@ -64,3 +64,7 @@ export const updateRoom = async (room, currentUser, dispatch, updatedRoom) => {
 
     dispatch({type:'END_LOADING'})
 }
+
+export const clearRoom = (dispatch) => {
+    dispatch({ type: 'RESET_ROOM' });
+  };

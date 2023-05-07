@@ -64,8 +64,8 @@ export const updateProfile = async(currentUser, updatedFields, dispatch)=>{
   dispatch({type:'END_LOADING'})
 }
 
-export const getUsers = async(dispatch) => {
-  const result = await fetchData({url, method:'GET'}, dispatch)
+export const getUsers = async(dispatch, currentUser) => {
+  const result = await fetchData({url, method:'GET', token:currentUser.token}, dispatch)
   console.log(result)
   if(result){
       dispatch({type:'UPDATE_ALL_USERS', payload:result})
@@ -87,10 +87,11 @@ export const getUser = async (userId, dispatch)=>{
 }
 
 
-export const updateStatus = (updatedFields, userId, dispatch)=>{
+export const updateStatus = (updatedFields, userId, dispatch, currentUser)=>{
   return fetchData({
     url:`${url}/updateStatus/${userId}`,
     method:'PATCH',
+    token: currentUser.token,
     body:updatedFields,
   },
   dispatch

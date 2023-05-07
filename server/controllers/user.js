@@ -22,7 +22,7 @@ export const createUser = async (req, res) => {
             password:hashedPassword
         })
         const {_id:id, photoURL, role, active} = user
-        const token = jwt.sign({id, name, photoURL}, process.env.JWT_SECRET, {expiresIn:'1h'})
+        const token = jwt.sign({id, name, photoURL, role}, process.env.JWT_SECRET, {expiresIn:'1h'})
 
         res.status(201).json({success:true, result:{id, name, email:user.email, photoURL, token, role, active}})
     } catch (error) {
@@ -47,7 +47,7 @@ export const login = tryCatch(async (req, res) => {
   
     const { _id: id, name, photoURL, role, active, favoriteRooms } = existedUser;
     if(!active) return res.status(400).json({success:false, message:'This account has been suspended. Contact Admin'})
-    const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id, name, photoURL, role}, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
     res.status(200).json({
@@ -57,16 +57,17 @@ export const login = tryCatch(async (req, res) => {
   });
 
 export const updateProfile = tryCatch(async (req, res) => {
+  const fields = req.body?.photoURL ? {name:req.body.name, photoURL:req.body.photoURL} : {name:req.body.name}
   console.log('updateProfile RUNS')
   console.log(req.user)
   console.log(req.body)
-  const updatedUser = await userModel.findByIdAndUpdate(req.user.id, req.body, {new:true})
-  const {_id:id, name, photoURL} = updatedUser
+  const updatedUser = await userModel.findByIdAndUpdate(req.user.id, fields, {new:true})
+  const {_id:id, name, photoURL, role} = updatedUser
 
   //to do: update all the rooms records added by the user so old name and picture don't stay there forever
   await roomModel.updateMany({uid:id}, {uName:name, uPhoto: photoURL})
 
-  const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id, name, photoURL, role}, process.env.JWT_SECRET, {
     expiresIn: '1h',
   });
   res.status(200).json({success:true, result:{name, photoURL, token}})

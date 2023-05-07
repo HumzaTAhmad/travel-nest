@@ -3,7 +3,7 @@ import { Box, IconButton, Tooltip } from '@mui/material'
 
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { deleteRoom } from '../../../actions/rooms'
+import { clearRoom, deleteRoom } from '../../../actions/rooms'
 import { useNavigate } from 'react-router-dom'
 
 function RoomsActions({params, currentUser}) {
@@ -14,6 +14,7 @@ function RoomsActions({params, currentUser}) {
 
     const navigate = useNavigate()
     const handleEdit = () =>{
+        clearRoom(dispatch)
         console.log('HELLLLO')
         dispatch({ type: 'UPDATE_LOCATION', payload: { lng, lat }});
         dispatch({type: 'UPDATE_DETAILS', payload: { price, title, description }});
