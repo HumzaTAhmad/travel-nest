@@ -26,7 +26,7 @@ function BottomNav({mapRef, containerRef, section}) {
                     <AddRoom/> {/*passing setValue to add room so when room is created it will take us back*/}
                 </Protected>
             ),
-            //3:<Recommendation setPage={setValue}/>
+            3:<Recommendation/>
         }[section]}
         <Paper elevation={3} sx={{position:'fixed', bottom:0, left:0, right:0, zIndex:2}}>
             <BottomNavigation

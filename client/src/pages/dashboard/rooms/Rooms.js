@@ -32,6 +32,11 @@ const dispatch = useDispatch()
       { field: 'price', headerName: 'Cost', width: 70, renderCell:(params) => '$'+params.row.price },
       { field: 'title', headerName: 'Title', width: 170 },
       { field: 'description', headerName: 'Description', width: 200 },
+      { field: 'phone', headerName: 'Phone', width: 105 },
+      { field: 'occupancy', headerName: 'Occupancy', width: 100 },
+      { field: 'LengthOfStay', headerName: 'Length of Stay', width: 130 },
+      { field: 'roomType', headerName: 'Room Type', width: 110},
+      { field: 'bathroomType', headerName: 'Bathroom Type', width: 130 },
       { field: 'lng', headerName: 'Longitude', width: 110 },
       { field: 'lat', headerName: 'Latitude', width:110 },
       {

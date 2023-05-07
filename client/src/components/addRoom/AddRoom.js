@@ -5,13 +5,13 @@ import AddDetails from './addDetails/AddDetails'
 import AddImages from './addImages/AddImages'
 import AddLocation from './addLocation/AddLocation'
 import {connect, useDispatch} from 'react-redux'
-import { Send } from '@mui/icons-material'
-import { createRoom } from '../../actions/rooms'
+import { Cancel, Send } from '@mui/icons-material'
+import { createRoom, updateRoom } from '../../actions/rooms'
 
 
 function AddRoom(props) {
     const dispatch = useDispatch();
-    const {images, details, location, currentUser} = props
+    const {images, details, location, currentUser, updatedRoom} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -94,7 +94,12 @@ function AddRoom(props) {
             phone:details.phone,
             images
         }
+        if(updatedRoom) return updateRoom(room, currentUser, dispatch, updatedRoom)
         createRoom(room, currentUser, dispatch)
+    }
+
+    const handleCancel = ()=>{
+
     }
   return (
     <Container sx={{my:4}}>
@@ -122,13 +127,16 @@ function AddRoom(props) {
                 Next
             </Button>
         </Stack>
-        {showSubmit && (
-            <Stack sx={{alignItems:'center'}}>
-                <Button variant='contained' endIcon={<Send />} onClick={handleSubmit}>
-                    Submit
-                </Button>
+            <Stack sx={{alignItems:'center', justifyContent:'center', gap:2}} direction='row'>
+            {showSubmit && ( <Button 
+                variant='contained'
+                endIcon={<Send />}
+                onClick={handleSubmit}
+            >
+                {updatedRoom? 'Update':'Submit'}
+              </Button> )}
+              <Button variant='outlined' endIcon={<Cancel />} onClick={handleCancel}>Cancel</Button>
             </Stack>
-        )}
         </Box>
     </Container>
   )
@@ -140,6 +148,7 @@ function mapStateToProps(state){
         details: state.details,
         location: state.location,
         currentUser: state.currentUser,
+        updatedRoom: state.updatedRoom
     }
 }
 

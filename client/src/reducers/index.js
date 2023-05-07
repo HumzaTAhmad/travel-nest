@@ -13,6 +13,7 @@ import addressFilter from './addressFilter';
 import room from './room';
 import users from './users';
 import section from './section';
+import updatedRoom from './updatedRoom';
 
 export default combineReducers({
     currentUser,
@@ -24,6 +25,7 @@ export default combineReducers({
     images,
     details,
     location,
+    updatedRoom,
     priceFilter,
     addressFilter,
     room,

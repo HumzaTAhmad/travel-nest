@@ -2,10 +2,10 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { roomRecommendation } from '../../actions/user';
 
-function Recommendation({rooms, currentUser, setPage}) {
+function Recommendation({rooms, currentUser}) {
     console.log(currentUser)
     const dispatch = useDispatch();
-    roomRecommendation(dispatch, currentUser.id, setPage)
+    roomRecommendation(dispatch, currentUser.id)
   return (
     <div>Hi</div>
   )

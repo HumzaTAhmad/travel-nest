@@ -4,12 +4,24 @@ import { Box, IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { deleteRoom } from '../../../actions/rooms'
+import { useNavigate } from 'react-router-dom'
 
 function RoomsActions({params, currentUser}) {
+
+    const { _id, lng, lat, price, title, description, images, phone, occupancy, LengthOfStay, roomType, bathroomType, uid } = params.row;
+
     const dispatch = useDispatch()
 
+    const navigate = useNavigate()
     const handleEdit = () =>{
-
+        console.log('HELLLLO')
+        dispatch({ type: 'UPDATE_LOCATION', payload: { lng, lat }});
+        dispatch({type: 'UPDATE_DETAILS', payload: { price, title, description }});
+        dispatch({ type: 'UPDATE_IMAGES', payload: images });
+        dispatch({ type: 'UPDATE_UPDATED_ROOM', payload: { _id, uid } });
+        dispatch({ type: 'UPDATE_SECTION', payload: 2 });
+        dispatch({type:'UPDATE_DETAILS', payload:{occupancy:occupancy, LengthOfStay:LengthOfStay, roomType:roomType, bathroomType:bathroomType, phone:phone}})
+        navigate('/');
     }
     
   return (
@@ -20,7 +32,7 @@ function RoomsActions({params, currentUser}) {
             </IconButton>
         </Tooltip>
         <Tooltip title='Edit this room'>
-            <IconButton onClick={()=>handleEdit}>
+            <IconButton onClick={()=>handleEdit()}>
                 <Edit/>
             </IconButton>
         </Tooltip>
