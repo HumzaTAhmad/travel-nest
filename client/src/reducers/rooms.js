@@ -4,6 +4,8 @@ export default (state = [], action) => {
             return [...state, ...action.payload];
         case 'UPDATE_ALL_ROOMS': //this case will get all the rooms in the database
             return action.payload
+        case 'DELETE_ROOM':
+            return [...state.filter((room) => room._id !== action.payload)]
         default:
             return state;
     }

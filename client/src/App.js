@@ -16,12 +16,15 @@ function App(props) {
     const containerRef = useRef()
     return (
         <>
+         <Loading />
+         <Notifications />
          <BrowserRouter>
          <Routes>
             <Route path='dashboard/*' element={<Dashboard />}/>
             <Route path='*' element={<Home />}/>
          </Routes>
          </BrowserRouter>
+         <Room />
         </>
     )
 }

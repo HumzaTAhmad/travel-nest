@@ -13,12 +13,9 @@ function Home(props) {
     const containerRef = useRef()
     return (
         <>
-            <Loading />
-            <Notifications />
             <Login />
             <NavBar containerRef={containerRef}/>
             <BottomNav mapRef={mapRef} containerRef={containerRef}/>
-            <Room />
         </>
     )
 }
