@@ -73,8 +73,8 @@ function SideList({open, setOpen, currentUser}) {
   const [selectedLink, setSelectedLink] = useState('')
 
   const list = useMemo(()=>[
+    {title:'Main', icon:<Dashboard/>, link:'', component:<Main setSelectedLink={setSelectedLink} link={''}/>},
     ...isAdmin(currentUser) ? [
-      {title:'Main', icon:<Dashboard/>, link:'', component:<Main setSelectedLink={setSelectedLink} link={''}/>},
       {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users setSelectedLink={setSelectedLink} link={'users'}/>},
     ] : [],
     {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms setSelectedLink={setSelectedLink} link={'rooms'}/>},

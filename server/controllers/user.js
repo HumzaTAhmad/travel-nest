@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import tryCatch from './utils/tryCatch.js'
 import roomModel from '../models/Room.js'
 import { recommendRoom } from './utils/reccomendationEngine.js'
+import { getUserLocationFromIP } from './utils/getUserLocation.js'
 
 export const createUser = async (req, res) => {
     try {
@@ -150,9 +151,23 @@ export const removeFromFavorite = tryCatch(async(req, res)=>{
   res.status(200).json({ success: true, result: updatedUser });
 })
 
-export const getRecommendedRooms = tryCatch(async (req, res) => {
+/*export const getRecommendedRooms = tryCatch(async (req, res) => {
   console.log("OOOOOOOOOOOOOOOOOOOOOOO")
   const userId = req.params.userId;
   const recommendedRooms = await recommendRoom(userId);
+  res.status(200).json({ success: true, result: recommendedRooms });
+});*/
+
+export const getRecommendedRooms = tryCatch(async (req, res) => {
+  console.log("OOOOOOOOOOOOOOOOOOOOOOO")
+  const userId = req.params.userId;
+
+  // Get the user's IP address (assuming you're not behind a proxy)
+  const ip = req.connection.remoteAddress;
+
+  // Get the user's location from their IP address
+  const userLocation = await getUserLocationFromIP(ip);
+
+  const recommendedRooms = await recommendRoom(userId, undefined, userLocation);
   res.status(200).json({ success: true, result: recommendedRooms });
 });
