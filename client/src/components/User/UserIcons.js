@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import {Avatar, Badge, Box, IconButton, Tooltip} from '@mui/material';
-import { Mail, Message, Notifications } from '@mui/icons-material';
+import { Dashboard, Mail, Message, Notifications, Settings } from '@mui/icons-material';
 import UserMenu from './UserMenu';
 import useCheckToken from '../../hooks/useCheckToken';
 
 
 function UserIcons(props) {
     
+    const dispatch = useDispatch()
     const {currentUser} = props
     const [anchorUserMenu, setAnchorUserMenu] = useState(null)
     return (
         <Box>
-            <IconButton size='large' color='inherit'>
-                <Badge color='error' badgeContent={5}>
-                    <Message/>
+            <IconButton size='large' color='inherit' onClick={()=>dispatch({type:'UPDATE_PROFILE', payload: {open:true, file:null, photoURL:currentUser?.photoURL}})}>
+                <Badge color='error'>
+                    <Settings fontSize="small" />
                 </Badge>
             </IconButton>
             <IconButton size='large' color='inherit'>
-                <Badge color='error' badgeContent={20}>
-                    <Notifications />
+                <Badge color='error'>
+                    <Dashboard fontSize="small" />
                 </Badge>
             </IconButton>
             <Tooltip title='Open User Setttings'>

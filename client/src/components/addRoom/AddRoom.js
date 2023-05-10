@@ -110,7 +110,7 @@ function AddRoom(props) {
         }
     }
   return (
-    <Container sx={{my:4}}>
+    <Container sx={{ my: 4, mt: 8 }}> 
         <Stepper alternativeLabel nonLinear activeStep={activeStep} sx={{mb:3}}>
             {steps.map((step, index)=>(
                 <Step key={step.label} completed={step.completed}>
