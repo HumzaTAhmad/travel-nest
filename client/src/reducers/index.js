@@ -14,6 +14,7 @@ import room from './room';
 import users from './users';
 import section from './section';
 import updatedRoom from './updatedRoom';
+import filteredRooms from './filteredRooms';
 
 export default combineReducers({
     currentUser,
@@ -30,5 +31,6 @@ export default combineReducers({
     addressFilter,
     room,
     users,
-    section
+    section,
+    filteredRooms
 })

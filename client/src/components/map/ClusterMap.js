@@ -14,7 +14,7 @@ const supercluster = new Supercluster({
   maxZoom: 20,
 });
 
-const ClusterMap = ({rooms, mapRef, containerRef}) => {
+const ClusterMap = ({filteredRooms, mapRef, containerRef}) => {
   
   const dispatch = useDispatch()
 
@@ -29,7 +29,7 @@ const ClusterMap = ({rooms, mapRef, containerRef}) => {
   }, []);
 
   useEffect(() => {
-    const points = rooms.map((room) => ({
+    const points = filteredRooms.map((room) => ({
       type: 'Feature',
       properties: {
         cluster: false,
@@ -49,7 +49,7 @@ const ClusterMap = ({rooms, mapRef, containerRef}) => {
       },
     }));
     setPoints(points);
-  }, [rooms]);
+  }, [filteredRooms]);
 
   useEffect(() => {
     supercluster.load(points);
@@ -132,7 +132,7 @@ const ClusterMap = ({rooms, mapRef, containerRef}) => {
 
 function mapStateToProps(state) {
   return {
-    rooms: state.rooms,
+    filteredRooms: state.filteredRooms,
   };
 }
 

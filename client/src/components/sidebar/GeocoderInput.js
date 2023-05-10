@@ -1,13 +1,13 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 const ctrl = new MapboxGeocoder({
     marker:false,
     accessToken: process.env.REACT_APP_MAP_TOKEN,
 })
 
-export default function GeocoderInput({mapRef, containerRef}) {
+function GeocoderInput({mapRef, containerRef, all}) {
 
     const dispatch = useDispatch()
     
@@ -19,9 +19,9 @@ export default function GeocoderInput({mapRef, containerRef}) {
 
         ctrl.on('result', (e)=>{
             const coords = e.result.geometry.coordinates
-            dispatchEvent({
+            dispatch({
                 type:'FILTER_ADDRESS',
-                payload:{lng:coords[0], lat:coords[1]}
+                payload:{address:{lng:coords[0], lat:coords[1]}, all}
             })
         })
 
@@ -31,3 +31,13 @@ export default function GeocoderInput({mapRef, containerRef}) {
     null
   )
 }
+
+function mapStateToProps(state) {
+    console.log(state)
+    return {
+      all: state
+    };
+  }
+  
+export default connect(mapStateToProps)(GeocoderInput);
+  
