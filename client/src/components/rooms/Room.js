@@ -11,6 +11,7 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/zoom'
 import './swiper.css'
 import { addToFavorite, getUser, removeFromFavorite } from '../../actions/user';
+import logo from '../../images/logo.jpg'
 
 const Transition = forwardRef((props, ref)=>{
     return <Slide direction='up' {...props} ref={ref} />
@@ -57,6 +58,7 @@ const Room = ({room, currentUser}) => {
             <Typography variant="h6" component="h3" sx={{ ml: 2, flex: 1 }}>
               {room?.title}
             </Typography>
+            <img src={logo} alt="Logo" style={{marginLeft: 'auto', height: '100px', width: '100px', marginRight:'800px'}} />
             <IconButton color="inherit" onClick={handleClose}>
               <Close />
             </IconButton>

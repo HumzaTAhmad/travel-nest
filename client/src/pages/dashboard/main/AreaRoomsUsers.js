@@ -15,14 +15,17 @@ const months = 5
 const today = new Date()
 const tempData = []
 for (let i = 0; i < months; i++) {
-    const date = new Date(today.getFullYear(), today.getMonth()+(i))
+    const date = new Date(
+      today.getFullYear(),
+      today.getMonth() - (months - (i + 1))
+    );
     tempData.push({
-        date,
-        name:moment(date).format('MMM YYYY'),
-        users:0,
-        rooms:0
-    })
-}
+      date,
+      name: moment(date).format('MMM YYYY'),
+      users: 0,
+      rooms: 0,
+    });
+  }
 
 function AreaRoomsUsers({rooms, users}) {
 

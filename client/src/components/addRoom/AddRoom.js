@@ -5,13 +5,14 @@ import AddDetails from './addDetails/AddDetails'
 import AddImages from './addImages/AddImages'
 import AddLocation from './addLocation/AddLocation'
 import {connect, useDispatch} from 'react-redux'
-import { Send } from '@mui/icons-material'
-import { createRoom } from '../../actions/rooms'
+import { Cancel, Send } from '@mui/icons-material'
+import { clearRoom, createRoom, updateRoom } from '../../actions/rooms'
+import { useNavigate } from 'react-router-dom'
 
 
 function AddRoom(props) {
     const dispatch = useDispatch();
-    const {images, details, location, currentUser, setPage} = props
+    const {images, details, location, currentUser, updatedRoom} = props
     const [activeStep, setActiveStep] = useState(0)
     const [steps, setSteps] = useState([
         {label:'Location', completed:false},
@@ -94,10 +95,22 @@ function AddRoom(props) {
             phone:details.phone,
             images
         }
-        createRoom(room, currentUser, dispatch, setPage)
+        if(updatedRoom) return updateRoom(room, currentUser, dispatch, updatedRoom)
+        createRoom(room, currentUser, dispatch)
+    }
+
+    const navigate = useNavigate()
+    const handleCancel = ()=>{
+        if(updatedRoom){
+            navigate('/dashboard/rooms')
+            clearRoom(dispatch)
+        }else{
+            dispatch({type:'UPDATE_SECTION', payload:0})
+            clearRoom(dispatch)
+        }
     }
   return (
-    <Container sx={{my:4}}>
+    <Container sx={{ my: 4, mt: 8 }}> 
         <Stepper alternativeLabel nonLinear activeStep={activeStep} sx={{mb:3}}>
             {steps.map((step, index)=>(
                 <Step key={step.label} completed={step.completed}>
@@ -122,13 +135,16 @@ function AddRoom(props) {
                 Next
             </Button>
         </Stack>
-        {showSubmit && (
-            <Stack sx={{alignItems:'center'}}>
-                <Button variant='contained' endIcon={<Send />} onClick={handleSubmit}>
-                    Submit
-                </Button>
+            <Stack sx={{alignItems:'center', justifyContent:'center', gap:2}} direction='row'>
+            {showSubmit && ( <Button 
+                variant='contained'
+                endIcon={<Send />}
+                onClick={handleSubmit}
+            >
+                {updatedRoom? 'Update':'Submit'}
+              </Button> )}
+              <Button variant='outlined' endIcon={<Cancel />} onClick={handleCancel}>Cancel</Button>
             </Stack>
-        )}
         </Box>
     </Container>
   )
@@ -139,7 +155,8 @@ function mapStateToProps(state){
         images: state.images,
         details: state.details,
         location: state.location,
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        updatedRoom: state.updatedRoom
     }
 }
 

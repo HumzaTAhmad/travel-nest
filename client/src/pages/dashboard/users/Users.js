@@ -8,7 +8,7 @@ import moment from 'moment'
 import { grey } from '@mui/material/colors'
 import UsersActions from './UsersActions'
 
-function Users({setSelectedLink, link, users}) {
+function Users({setSelectedLink, link, users, currentUser}) {
 
 const dispatch = useDispatch()
 
@@ -17,7 +17,7 @@ const dispatch = useDispatch()
 
   useEffect(() => {
     setSelectedLink(link);
-    if (users.length === 0) getUsers(dispatch);
+    if (users.length === 0) getUsers(dispatch, currentUser);
   }, []);
 
   const columns = useMemo(
@@ -38,14 +38,14 @@ const dispatch = useDispatch()
         width: 100,
         type: 'singleSelect',
         valueOptions: ['basic', 'editor', 'admin'],
-        editable: true,
+        editable: currentUser?.role === 'admin',
       },
       {
         field: 'active',
         headerName: 'Active',
         width: 100,
         type: 'boolean',
-        editable: true,
+        editable: currentUser?.role === 'admin',
       },
       {
         field: 'createdAt',
@@ -105,7 +105,8 @@ const dispatch = useDispatch()
 function mapStateToProps(state) {
     console.log(state)
     return {
-      users: state.users
+      users: state.users,
+      currentUser: state.currentUser
     };
   }
   

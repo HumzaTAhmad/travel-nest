@@ -4,6 +4,7 @@ import { useDispatch, connect } from 'react-redux';
 import {Lock, Menu, Start} from '@mui/icons-material';
 import UserIcons from './user/UserIcons';
 import Sidebar from './sidebar/Sidebar'
+import logo from '../images/logo.jpg'
 
 function NavBar({currentUser, containerRef}) {
 
@@ -28,6 +29,7 @@ function NavBar({currentUser, containerRef}) {
                         <Typography variant='h6' component='h1' noWrap sx={{flexGrow:1, display:{xs:'flex', md:'none'}}}>
                             Host a Nest Now!
                         </Typography>
+                        <img src={logo} alt="Logo" style={{marginLeft: 'auto', height: '100px', width: '100px', marginRight:'400px'}} />
                         {currentUser == null? (<Button color='inherit' startIcon={<Lock />} onClick={() => dispatch({type:'OPEN_LOGIN'})}>
                             Login
                         </Button>): (

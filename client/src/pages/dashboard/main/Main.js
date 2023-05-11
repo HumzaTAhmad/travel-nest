@@ -9,14 +9,14 @@ import moment from 'moment'
 import PieRoomsCost from './PieRoomsCost'
 import AreaRoomsUsers from './AreaRoomsUsers'
 
-function Main({setSelectedLink, link, users, rooms}) {
+function Main({setSelectedLink, link, users, rooms, currentUser}) {
 
     const dispatch = useDispatch()
 
     useEffect(()=>{
         setSelectedLink(link)
         getRooms(dispatch)
-        getUsers(dispatch)
+        getUsers(dispatch, currentUser)
     }, [])
 
     return (
@@ -109,7 +109,8 @@ function Main({setSelectedLink, link, users, rooms}) {
 
 const mapStateToProps = state => ({
     users: state.users,
-    rooms: state.rooms
+    rooms: state.rooms,
+    currentUser: state.currentUser
 });
 
 export default connect(mapStateToProps)(Main);

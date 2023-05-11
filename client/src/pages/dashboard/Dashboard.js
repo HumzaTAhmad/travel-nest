@@ -12,6 +12,8 @@ import { ThemeProvider } from '@mui/system';
 import { createTheme, Tooltip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Brightness4, Brightness7, Home } from '@mui/icons-material';
+import Protected from '../../components/protected/Protected';
+import Login from '../../components/user/Login'
 
 const drawerWidth = 240;
 
@@ -82,8 +84,11 @@ export default function Dashboard() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <SideList open={open} setOpen={setOpen} />
+      <Protected>
+        <SideList open={open} setOpen={setOpen} />
+      </Protected>
     </Box>
+    <Login />
     </ThemeProvider>
   );
 }

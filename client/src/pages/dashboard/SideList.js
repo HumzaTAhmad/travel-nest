@@ -9,6 +9,8 @@ import Messages from './messages/Messages';
 import Requests from './requests/Requests';
 import Rooms from './rooms/Rooms';
 import Users from './users/Users';
+import useCheckToken from '../../hooks/useCheckToken'
+import isAdmin from './utils/isAdmin';
 
 const drawerWidth = 240;
 
@@ -63,14 +65,18 @@ const openedMixin = (theme) => ({
 
 function SideList({open, setOpen, currentUser}) {
 
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  dispatch(useCheckToken)
 
   const [selectedLink, setSelectedLink] = useState('')
 
   const list = useMemo(()=>[
     {title:'Main', icon:<Dashboard/>, link:'', component:<Main setSelectedLink={setSelectedLink} link={''}/>},
-    {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users setSelectedLink={setSelectedLink} link={'users'}/>},
+    ...isAdmin(currentUser) ? [
+      {title:'Users', icon:<PeopleAlt/>, link:'users', component:<Users setSelectedLink={setSelectedLink} link={'users'}/>},
+    ] : [],
     {title:'Rooms', icon:<KingBed/>, link:'rooms', component:<Rooms setSelectedLink={setSelectedLink} link={'rooms'}/>},
     {title:'Requests', icon:<NotificationsActive/>, link:'requests', component:<Requests setSelectedLink={setSelectedLink} link={'requests'}/>},
     {title:'Messages', icon:<MarkChatUnread/>, link:'messages', component:<Messages setSelectedLink={setSelectedLink} link={'messages'}/>},
@@ -144,6 +150,12 @@ function SideList({open, setOpen, currentUser}) {
           {list.map((item) => (
             <Route key={item.title} path={item.link} element={item.component} />
           ))}
+          <Route path='*' element={isAdmin(currentUser) ? (
+            <Main {...{setSelectedLink, link:''}} />
+          ) : (
+            <Rooms {...{setSelectedLink, link:'rooms'}} />
+          )}
+          />
         </Routes>
       </Box>
     </>

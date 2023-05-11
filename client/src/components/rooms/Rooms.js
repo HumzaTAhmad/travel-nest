@@ -10,7 +10,7 @@ function Rooms(props) {
   console.log(rooms)
 
   return (
-    <Container>
+    <Container style={{ paddingTop: '64px' }}>
       <ImageList gap={12} sx={{mb:8, gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))!important'}}>
         {
           rooms.map(room=>(
