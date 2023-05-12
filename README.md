@@ -28,9 +28,9 @@ What things you need to install the software and how to install them:
 
 A step by step series of examples that tell you how to get a development environment running:
 
-1. Clone the repository
-2. Install dependencies
-3. Start the server
+1. Clone the repository - "git clone https://github.com/HumzaTAhmad/travel-nest.git"
+2. Install dependencies - "npm install" - Run this both in the client folder and serer folder
+3. Start the server - "npm start" - Run this both in the client folder and server folder
 
 ### Running the tests
 
