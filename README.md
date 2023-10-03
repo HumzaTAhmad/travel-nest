@@ -2,6 +2,9 @@
 
 The platform is designed to connect hosts and travelers, similar to the concept of couch surfing. Hosts can offer their rooms or spaces for travelers to stay in, either for free or for a small fee. The rooms and spaces are displayed on a map or in the form of cards on the page, complete with detailed information and a slideshow of images. Travelers can easily filter the available rooms by city or cost, making it easier to find the perfect place to stay that fits their budget and location preferences.
 
+![image](https://github.com/HumzaTAhmad/travel-nest/assets/75864167/58ea569d-e0af-4963-981c-0500788c70d1)
+
+
 ## Table of Contents
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
